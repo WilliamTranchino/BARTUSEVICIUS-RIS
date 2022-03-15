@@ -1,0 +1,14 @@
+---
+title: "BARTUSEVICIUS-RIS"
+author: "Will"
+date: '2022-03-15'
+output: html_document
+---
+```{r}
+suppressPackageStartupMessages({
+  library("prob")
+  library("rio")
+  library("here")
+  library("tidyverse")
+})
+```

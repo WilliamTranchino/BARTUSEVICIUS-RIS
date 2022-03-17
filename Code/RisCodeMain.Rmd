@@ -1,14 +1,40 @@
 ---
-title: "BARTUSEVICIUS-RIS"
-author: "Will"
-date: '2022-03-15'
-output: html_document
+title: "Laboratorio didattico"
+subtitle: "The Psychological Burden of the COVID-19"
+author: "None"
+date: "`r format(Sys.Date())`"
+output:
+  html_document:
+    highlight: pygments
+    fig_caption: yes
+    toc: TRUE
+    toc_depth: 2
+    number_sections: TRUE
+    toc_float:
+      smooth_scroll: FALSE
 ---
+
+Carico i pacchetti necessari:
+
 ```{r}
 suppressPackageStartupMessages({
-  library("prob")
-  library("rio")
-  library("here")
   library("tidyverse")
+  library("here")
+  library("rio")
+  library("brms")
+  library("psych")
+  library("cmdstanr")
 })
+```
+
+Leggura dei dati:
+
+```{r}
+df <- rio::import(here::here("DatiR", "hope_violence_final.dta"))
+```
+
+Per capire a cosa corrisponda la codifica di `country` conto il numero di casi in ciascun paese e in ciascuna wave. 
+
+```{r}
+table(df$wave, df$country)
 ```

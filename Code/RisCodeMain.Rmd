@@ -38,10 +38,18 @@ Per capire a cosa corrisponda la codifica di `country` conto il numero di casi i
 ```{r}
 table(df$wave, df$country)
 ```
-glimplse()
+glimpse()   #ho corretto :)
 ```{r}
 gender_items <- df %>%
   select("gender")
 gender <- rowSums(gender_items) 
 hist(gender)
 ```
+
+```{r}
+country_items <- df %>%
+  select("country")
+country <- rowSums(country_items) 
+hist(country)
+```
+

@@ -15,7 +15,6 @@ output:
 ---
 
 Carico i pacchetti necessari:
-
 ```{r}
 suppressPackageStartupMessages({
   library("tidyverse")
@@ -28,13 +27,11 @@ suppressPackageStartupMessages({
 ```
 
 Lettura dei dati:
-
 ```{r}
 df <- rio::import(here::here("DatiR", "hope_violence_final.dta"))
 ```
 
 Per capire a cosa corrisponda la codifica di `country` conto il numero di casi in ciascun paese e in ciascuna wave. 
-
 ```{r}
 table(df$wave, df$country)
 ```

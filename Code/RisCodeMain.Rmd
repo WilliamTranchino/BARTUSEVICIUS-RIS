@@ -57,7 +57,7 @@ race <- rowSums(race_items)
 hist(race)
 ```
 
-#VirginiaSimoncini:
+#VirginiaSimoncini:selezione dal data.frame della sezione "education_rc" + sua rappresetazione in un istogramma e creazione del vettore education_items
 ```{r}
 education_items <- df %>%
   select("education_rc")

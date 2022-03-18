@@ -35,17 +35,17 @@ Per capire a cosa corrisponda la codifica di `country` conto il numero di casi i
 ```{r}
 table(df$wave, df$country)
 ```
-glimpse()   #ho corretto :)
+glimpse()   #WilliamTranchino: istogramma sui gender
 ```{r}
 gender_items <- df %>%
   select("gender")
 gender <- rowSums(gender_items) 
 hist(gender)
 ```
-
+#LeonardoPecori: Istogramma sulle nazioni, volevo colorare il grafico in base alla quantita'
 ```{r}
 country_items <- df %>%
-  select("country")
+    select("country")
 country <- rowSums(country_items) 
 hist(country)
 ```

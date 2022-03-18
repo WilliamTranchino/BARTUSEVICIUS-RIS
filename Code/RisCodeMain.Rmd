@@ -52,4 +52,11 @@ country_items <- df %>%
 country <- rowSums(country_items) 
 hist(country)
 ```
+#GiuliaViliani: selezione dal data.frame della sezione "race" + sua rappresetazione in un istogramma e creazione del vettore race_items
+```{r}
+race_items <- df %>%
+  select("race")
+race <- rowSums(race_items)
+hist(race)
+```
 

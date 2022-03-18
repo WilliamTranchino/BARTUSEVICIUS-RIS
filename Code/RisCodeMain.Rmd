@@ -27,7 +27,7 @@ suppressPackageStartupMessages({
 })
 ```
 
-Leggura dei dati:
+Lettura dei dati:
 
 ```{r}
 df <- rio::import(here::here("DatiR", "hope_violence_final.dta"))

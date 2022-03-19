@@ -56,4 +56,22 @@ race_items <- df %>%
 race <- rowSums(race_items)
 hist(race)
 ```
+#AlessiaMassini: selezione della variabile "education_rc" + rappresentazione grafica in un density plot 
+```{r}
+education_items <- df %>%
+  select("education_rc")
+
+df %>%
+  ggplot(aes(x = education_rc)) +
+  geom_density(
+    aes(x = education_rc),
+    adjust = 0.5,
+    size = 0.8,
+    alpha = 0.5
+    ) +
+  labs(
+    x = "Education level",
+    y = "Frequency"
+  )
+```
 

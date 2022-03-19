@@ -56,4 +56,29 @@ race_items <- df %>%
 race <- rowSums(race_items)
 hist(race)
 ```
+#SamantaRoncolino: creazione del grafico della variabile "education_rc"
+```{r}
+table(df$education_rc)   # Frequenza assoluta della variabile education_rc
+
+# Creo una tabella in cui assegno a "low", "medium" e "high" (le modalità della variabile education_rc) le rispettive frequenze assolute:
+education_freq <- tribble(     
+  ~education,         ~freq,
+  "low",              5408,
+  "medium",           3431,
+  "high",             1860
+) 
+
+education_freq 
+
+# Questo vettore è utile per riordinare l'asse x secondo un preciso ordine in ggplot:
+positions <- c("low", "medium", "high") 
+
+# Utilizzo ggplot per creare un grafico colorato ed ordinato secondo "low", "medium" e "high"
+grafico_education <- ggplot(data = education_freq) +
+  geom_bar(mapping = aes(x = education, y = freq, fill = education), stat = "identity") + 
+  scale_fill_manual("legend", values = c("low" = "yellow", "medium" = "orange", "high" = "red")) + 
+  scale_x_discrete(limits = positions)
+
+grafico_education
+```
 

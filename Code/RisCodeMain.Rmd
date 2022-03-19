@@ -56,4 +56,12 @@ race_items <- df %>%
 race <- rowSums(race_items)
 hist(race)
 ```
+#MartinaSplendorini: creazione istogramma da sezione "profile_age5"
+```{r}
+glimpse(df)
+profile_age5_items <- df %>%
+    select("profile_age5")
+profile_age <- rowSums(profile_age5_items)
+hist(profile_age)
+```
 

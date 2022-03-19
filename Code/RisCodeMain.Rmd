@@ -56,4 +56,12 @@ race_items <- df %>%
 race <- rowSums(race_items)
 hist(race)
 ```
+#MartaMariottini: selezione dal data frame della sezione "gender", campo ristretto, istogramma
+
+```{r}
+gender_items <- df %>%
+  select("gender")
+gender[600:1000]
+hist(gender[600:1000])
+```
 

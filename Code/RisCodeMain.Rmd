@@ -56,4 +56,8 @@ race_items <- df %>%
 race <- rowSums(race_items)
 hist(race)
 ```
+#MatteoPortici: 
+```{r}
+
+```
 

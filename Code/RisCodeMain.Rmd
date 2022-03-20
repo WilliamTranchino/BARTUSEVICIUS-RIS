@@ -1,7 +1,7 @@
 ---
 title: "Laboratorio didattico"
 subtitle: "The Psychological Burden of the COVID-19"
-author: "None"
+author: Corrado Caudek
 date: "`r format(Sys.Date())`"
 output:
   html_document:
@@ -13,6 +13,8 @@ output:
     toc_float:
       smooth_scroll: FALSE
 ---
+William Tranchino, Leonardo Pecori, Virginia Simoncini: Inizializzazione e configurazione di Rstudio e Gitkraken (comprensivo di installazione di cmdstanr, Rtools, Xcode per mac, creazione di account per studenti su GitHub), con supporto avvenuto principalmente durante i due incontri organizzati in settimana. Unione dei vari elaborati tramite Gitkraken, con conseguente risoluzione dei conflitti fra file; ed infine esportazione dell'elaborato in html
+
 Carico i pacchetti necessari:
 ```{r}
 suppressPackageStartupMessages({
@@ -27,142 +29,6 @@ suppressPackageStartupMessages({
 Lettura dei dati:
 ```{r}
 df <- rio::import(here::here("DatiR", "hope_violence_final.dta"))
-```
-
-Per capire a cosa corrisponda la codifica di `country` conto il numero di casi in ciascun paese e in ciascuna wave. 
-```{r}
-table(df$wave, df$country)
-```
-
-#WilliamTranchino: iniziale selezione dei parametri da analizzare "gender", creazione dell'istogramma di gender
-```{r}
-gender_items <- df %>%
-  select("gender")
-gender <- rowSums(gender_items) 
-hist(gender)
-```
-
-#LeonardoPecori: Istogramma sulle nazioni, volevo colorare il grafico in base alla quantita'
-```{r}
-country_items <- df %>%
-    select("country")
-country <- rowSums(country_items) 
-hist(country)
-```
-
-#GiuliaViliani: selezione dal data.frame della sezione "race" + sua rappresetazione in un istogramma e creazione del vettore race_items
-```{r}
-race_items <- df %>%
-  select("race")
-race <- rowSums(race_items)
-hist(race)
-```
-#MartinaSplendorini: creazione istogramma da sezione "profile_age5"
-```{r}
-glimpse(df)
-profile_age5_items <- df %>%
-    select("profile_age5")
-profile_age <- rowSums(profile_age5_items)
-hist(profile_age)
-```
-
-#LorenzoZerauschek: selezione del data.frame di education_rc, rappresentato in istogramma, creato vettore "education_rc_items"
-```{r}
-education_rc_items <- df %>%
-  select("education_rc")
-education <- rowSums(education_rc_items)
-hist(education)
-```
-
-#MatteoPortici: selezione della sezione education_rc del data.frame con relativa creazione dell'istogramma e del vettore education_items
-```{r}
-education_items <- df %>%
-  select("education_rc")
-education_rc<- rowSums(education_items) 
-hist(education_rc)
-```
-
-#MatildePapini: Ho selezionato dal df della variabile "dropout" e ho creato l'istogramma ed il vettore "dropout_items".
-```{r}
-glimpse(df)
-dropout_items <- df %>%
-  select(dropout)
-dropout <-rowSums(dropout_items)
-hist(dropout)
-```
-
-#GretaMenichetti creazione vettore education_items,selezione dal data.frame della sezione "education_rc" e creazione istogramma per education_rc 
-```{r}
-education_items <- df %>%
-  select("education_rc")
-education_rc <- rowSums(education_items)
-hist(education_rc)
-```
-
-#VirginiaSimoncini:selezione dal data.frame della sezione "education_rc" + sua rappresetazione in un istogramma e creazione del vettore education_items
-```{r}
-education_items <- df %>%
-  select("education_rc")
-education <- rowSums(education_items)
-hist(education)
-```
-
-#ReginaMeister:calcolo il nr.dei partecipanti al progetto nella 1. e nella2.ondata e paragono i numeri.
-      1    2    3    4
-  1 1524 1521 1543 1543
-  2 1151 1286 1241  890
-  1.ondata:6131
-  2.ondata:4568
- calcolo percentuale:74,5% dei partecipanti della 1.onda partecipa al progetto in 2.onda
- nel testo gli autori parlano di 25% di partecipanti in meno nel progetto in 2.onda
- osservo un 0,5 % di differenza tra il nr. calcolato ed il valore espresso dagli autori nel testo.
-commento:ancora ho difficoltà con R
-```{r}
-country_items <- df %>%
-  select("country")
-country <- rowSums(country_items) 
-hist(country)
-``` 
- 
-#FlaviaNatoli: selezionato dal data.frame la sezione "country" e ho fatto una rappresetazione in un istogramma e creato il vettore country_items
-commento: ho ancora molte difficoltà con R
-```{r}
-country_items <- df %>%
-  select("country")
-race <- rowSums(country_items)
-hist(country)
-```
- 
-#AlessandroPodda:selezione dal data.frame della sezione "race" e istogramma su campo ristretto.
-```{r}
-race_items <- df %>%
-  select("race")
-race[300:500]
-hist(race[300:500])
-```
-
-#ChiaraManetti:selezione della sezione "wave"con la rappresentazione del suo istogramma e creazione del vettore wave_items
-```{r}
-wave_items<-df%>%
-  select("wave")
-wave<-rowSums(wave_items)
-hist(wave)
-```
-
-#MartinaPierallini: dati dei dropouts prelevati dal df e rappresentati in un istogramma:
-```{r}
-dropout_items <- df %>%
-     select("dropout")
-dropout <- rowSums(dropout_items)
-hist(dropout)
-```
-
-#AlessiaNesti: selezione dalla sezione "dropout" +  rappresentazione istogramma. 
-```{r}
-dropout_item <- df %>%
-  select("dropout")
-dropout <- rowSums(dropout_item)
-hist(dropout)
 ```
 
 #SamantaRoncolino: creazione del grafico della variabile "education_rc"
@@ -184,16 +50,6 @@ grafico_education <- ggplot(data = education_freq) +
   scale_fill_manual("legend", values = c("low" = "yellow", "medium" = "orange", "high" = "red")) + 
   scale_x_discrete(limits = positions)
 grafico_education
-
-
-```
-
-#IsabellaScavone: selezione dal data.frame della sezione "dropout" e creazione dell'istogramma
-```{r}
-dropout_items <- df %>%
-  select("dropout")
-dropout <- rowSums(dropout_items) 
-hist(dropout)
 ```
 
 #AlessiaMassini: selezione della variabile "education_rc" + rappresentazione grafica in un density plot  
@@ -214,28 +70,74 @@ df %>%
   ) 
 ``` 
 
+#WilliamTranchino: iniziale selezione dei parametri da analizzare "gender", creazione dell'istogramma di gender
+
+#LeonardoPecori: Istogramma sulle nazioni, volevo colorare il grafico in base alla quantita'
+
+#VirginiaSimoncini:selezione dal data.frame della sezione "education_rc" + sua rappresetazione in un istogramma e creazione del vettore education_items
+
+#GiuliaViliani: selezione dal data.frame della sezione "race" + sua rappresetazione in un istogramma e creazione del vettore race_items
+
+#MartinaSplendorini: creazione istogramma da sezione "profile_age5"
+
+#LorenzoZerauschek: selezione del data.frame di education_rc, rappresentato in istogramma, creato vettore "education_rc_items"
+
+#MatteoPortici: selezione della sezione education_rc del data.frame con relativa creazione dell'istogramma e del vettore education_items
+
+#MatildePapini: Ho selezionato dal df della variabile "dropout" e ho creato l'istogramma ed il vettore "dropout_items".
+
+#GretaMenichetti creazione vettore education_items,selezione dal data.frame della sezione "education_rc" e creazione istogramma per education_rc 
+
+#ReginaMeister:calcolo il nr.dei partecipanti al progetto nella 1. e nella2.ondata e paragono i numeri.
+      1    2    3    4
+  1 1524 1521 1543 1543
+  2 1151 1286 1241  890
+  1.ondata:6131
+  2.ondata:4568
+ calcolo percentuale:74,5% dei partecipanti della 1.onda partecipa al progetto in 2.onda
+ nel testo gli autori parlano di 25% di partecipanti in meno nel progetto in 2.onda
+ osservo un 0,5 % di differenza tra il nr. calcolato ed il valore espresso dagli autori nel testo.
+commento:ancora ho difficoltà con R
+ 
+#FlaviaNatoli: selezionato dal data.frame la sezione "country" e ho fatto una rappresetazione in un istogramma e creato il vettore country_items
+commento: ho ancora molte difficoltà con R
+ 
+#AlessandroPodda:selezione dal data.frame della sezione "race" e istogramma su campo ristretto.
+
+#ChiaraManetti:selezione della sezione "wave"con la rappresentazione del suo istogramma e creazione del vettore wave_items
+
+#MartinaPierallini: dati dei dropouts prelevati dal df e rappresentati in un istogramma:
+
+#AlessiaNesti: selezione dalla sezione "dropout" +  rappresentazione istogramma. 
+
+#IsabellaScavone: selezione dal data.frame della sezione "dropout" e creazione dell'istogramma
+
 #SerenaSooriya: boxplot della variabile gender 
-```{r}
-gender_items <- df %>%
-  select("gender")
-gender <- rowSums(gender_items)
-boxplot(gender)
-```
 
 #MartaMariottini: selezione dal data frame della sezione "gender", campo ristretto, istogramma 
-```{r} 
-gender_items <- df %>% 
-  select("gender") 
-gender[600:1000] 
-hist(gender[600:1000]) 
-``` 
 
 #ElisaPellegrini: selezione dal data.frame della sezione "profile_age5" e la sua rappresentazione in un instogramma.
 In piu creazione del vettore profile_age5_items. Inizialmente ho avuto problemi con cmdstan,
 ma dopo aver risolto con l'aiuto del collega Pecori, in seguito non ho avuto ulteriori difficolta.
-```{r}
-profile_age5_items <- df %>%
-   select("profile_age5")
-profile_age5 <- rowSums(profile_age5_items)
-hist(profile_age5)
-```
+
+#CamillaPensalfini:ho successivamente messo in relazione la frequenza di abbandono scolastico ("dropout") con il genere ("gender"). Da cio' e' risultato un grafico che mostra che i maschi, codice 0 (come da documento "Bartusevicius_eta_2021", pag.5 ) abbandonano piu' frequentemente delle femmine (codice 1)
+
+Problematiche varie: 
+
+#ElisaPlacidi: Problematiche nell'istallazione di cmdstanr inerenti ai permessi d'amministratore non disponibili sulla sua macchina e altri errori non ben identificati; la risoluzione di ciò è in corso
+
+#GaiaLenzini: Usando Windows nell’installazione dei pacchetti precedenti a cmdstanr sulla console continua a comparire “errore in unzip” ed “esecuzione interrotta” non riuscendo ad andare avanti. la risoluzione di ciò è in corso
+
+#CostanzaLonari: Il problema con cmdstan è che non riesco a installare gli rtools perché ho la memoria troppo piena. Inoltre a Rstudio quando gli dico di installare cmdstan mi dice che non è disponibile per la versione di Rstudio che ho sul compute. la risoluzione di ciò è in corso
+
+#LorenzaPaladini: Problematiche nell'istallazione di cmdstanr inerenti ai permessi d'amministratore non disponibili sulla sua macchina e altri errori non ben identificati; la risoluzione di ciò è in corso
+
+#EleonoraPollacchi: purtroppo in questi giorni non avevo il computer e quindi non sono riuscita a fare il lavoro, però da domani ho di nuovo il computer
+
+#EleonoraLunardi: purtroppo sono a lavoro e non posso mettermi a farlo, settimana prossima vedrò di mettermici il più possibile
+
+Non frequentanti:
+
+#PreziusoGinevra: Mi sa che abbandono, sono rimasta troppo indietro e con il fatto che lavoro non so come recuperare
+
+#MelnerClarissa: Iscritta al gruppo moodle, non iscritta nel gruppo WP, nessun tipo di comunicazione

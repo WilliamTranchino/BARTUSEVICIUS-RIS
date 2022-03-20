@@ -62,6 +62,13 @@ education_items <- df %>%
 education_rc<- rowSums(education_items) 
 hist(education_rc)
 ```
+#GretaMenichetti creazione vettore education_items,selezione dal data.frame della sezione "education_rc" e creazione istogramma per education_rc 
+```{r}
+education_items <- df %>%
+  select("education_rc")
+education_rc <- rowSums(education_items)
+hist(education_rc)
+```
 
 #VirginiaSimoncini:selezione dal data.frame della sezione "education_rc" + sua rappresetazione in un istogramma e creazione del vettore education_items
 ```{r}

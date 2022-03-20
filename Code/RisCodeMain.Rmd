@@ -70,5 +70,17 @@ hist(race)
  osservo un 0,5 % di differenza tra il nr. calcolato ed il valore espresso dagli autori nel testo.
  
  commento:ancora ho difficoltà con R
+ 
+ 
+ #FlaviaNatoli: selezionato dal data.frame la sezione "country" e ho fatto una rappresetazione in un istogramma e creato il vettore country_items
+ commento: ho ancora molte difficoltà con R
+```{r}
+country_items <- df %>%
+  select("country")
+race <- rowSums(country_items)
+hist(country)
+
+```
+ 
   
 

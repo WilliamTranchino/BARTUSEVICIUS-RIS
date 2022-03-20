@@ -229,3 +229,13 @@ gender_items <- df %>%
 gender[600:1000] 
 hist(gender[600:1000]) 
 ``` 
+
+#ElisaPellegrini: selezione dal data.frame della sezione "profile_age5" e la sua rappresentazione in un instogramma.
+In piu creazione del vettore profile_age5_items. Inizialmente ho avuto problemi con cmdstan,
+ma dopo aver risolto con l'aiuto del collega Pecori, in seguito non ho avuto ulteriori difficolta.
+```{r}
+profile_age5_items <- df %>%
+   select("profile_age5")
+profile_age5 <- rowSums(profile_age5_items)
+hist(profile_age5)
+```

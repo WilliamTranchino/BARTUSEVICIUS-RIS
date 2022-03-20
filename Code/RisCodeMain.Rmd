@@ -42,13 +42,6 @@ gender <- rowSums(gender_items)
 hist(gender)
 ```
 
-```{r}
-country_items <- df %>%
-  select("country")
-country <- rowSums(country_items) 
-hist(country)
-```
-
 #GiuliaViliani: selezione dal data.frame della sezione "race" + sua rappresetazione in un istogramma e creazione del vettore race_items
 ```{r}
 race_items <- df %>%
@@ -75,7 +68,12 @@ hist(education)
  nel testo gli autori parlano di 25% di partecipanti in meno nel progetto in 2.onda
  osservo un 0,5 % di differenza tra il nr. calcolato ed il valore espresso dagli autori nel testo.
 commento:ancora ho difficoltà con R
- 
+```{r}
+country_items <- df %>%
+  select("country")
+country <- rowSums(country_items) 
+hist(country)
+``` 
  
 #FlaviaNatoli: selezionato dal data.frame la sezione "country" e ho fatto una rappresetazione in un istogramma e creato il vettore country_items
 commento: ho ancora molte difficoltà con R

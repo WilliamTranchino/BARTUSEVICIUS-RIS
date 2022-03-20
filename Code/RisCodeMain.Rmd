@@ -49,6 +49,7 @@ country_items <- df %>%
 country <- rowSums(country_items) 
 hist(country)
 ```
+
 #GiuliaViliani: selezione dal data.frame della sezione "race" + sua rappresetazione in un istogramma e creazione del vettore race_items
 ```{r}
 race_items <- df %>%
@@ -56,6 +57,7 @@ race_items <- df %>%
 race <- rowSums(race_items)
 hist(race)
 ```
+
 #LorenzoZerauschek: selezione del data.frame di education_rc, rappresentato in istogramma, creato vettore "education_rc_items"
 ```{r}
 education_rc_items <- df %>%
@@ -71,6 +73,7 @@ education_items <- df %>%
 education_rc<- rowSums(education_items) 
 hist(education_rc)
 ```
+
 #MatildePapini: Ho selezionato dal df della variabile "dropout" e ho creato l'istogramma ed il vettore "dropout_items".
 ```{r}
 glimpse(df)
@@ -79,7 +82,6 @@ dropout_items <- df %>%
 dropout <-rowSums(dropout_items)
 hist(dropout)
 ```
-
 
 #GretaMenichetti creazione vettore education_items,selezione dal data.frame della sezione "education_rc" e creazione istogramma per education_rc 
 ```{r}
@@ -131,7 +133,6 @@ race[300:500]
 hist(race[300:500])
 ```
 
-
 #ChiaraManetti:selezione della sezione "wave"con la rappresentazione del suo istogramma e creazione del vettore wave_items
 ```{r}
 wave_items<-df%>%
@@ -139,6 +140,7 @@ wave_items<-df%>%
 wave<-rowSums(wave_items)
 hist(wave)
 ```
+
 #MartinaPierallini: dati dei dropouts prelevati dal df e rappresentati in un istogramma:
 ```{r}
 dropout_items <- df %>%
@@ -146,6 +148,7 @@ dropout_items <- df %>%
 dropout <- rowSums(dropout_items)
 hist(dropout)
 ```
+
 #AlessiaNesti: selezione dalla sezione "dropout" +  rappresentazione istogramma. 
 ```{r}
 dropout_item <- df %>%
@@ -176,8 +179,8 @@ grafico_education
 
 
 ```
-#IsabellaScavone: selezione dal data.frame della sezione "dropout" e creazione dell'istogramma
 
+#IsabellaScavone: selezione dal data.frame della sezione "dropout" e creazione dell'istogramma
 ```{r}
 dropout_items <- df %>%
   select("dropout")

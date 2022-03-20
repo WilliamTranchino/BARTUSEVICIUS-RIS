@@ -55,6 +55,13 @@ race_items <- df %>%
 race <- rowSums(race_items)
 hist(race)
 ```
+#MatteoPortici: selezione della sezione education_rc del data.frame con relativa creazione dell'istogramma e del vettore education_items
+```{r}
+education_items <- df %>%
+  select("education_rc")
+education_rc<- rowSums(education_items) 
+hist(education_rc)
+```
 
 #VirginiaSimoncini:selezione dal data.frame della sezione "education_rc" + sua rappresetazione in un istogramma e creazione del vettore education_items
 ```{r}

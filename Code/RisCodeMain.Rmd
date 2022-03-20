@@ -57,6 +57,9 @@ race_items <- df %>%
 race <- rowSums(race_items)
 hist(race)
 ```
+#SamantaRoncolino: creazione del grafico della variabile "education_rc"
+```{r}
+table(df$education_rc)   # Frequenza assoluta della variabile education_rc
 
 #MatteoPortici: selezione della sezione education_rc del data.frame con relativa creazione dell'istogramma e del vettore education_items
 ```{r}

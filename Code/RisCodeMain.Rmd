@@ -133,6 +133,13 @@ dropout_items <- df %>%
 dropout <- rowSums(dropout_items)
 hist(dropout)
 ```
+#AlessiaNesti: selezione dalla sezione "dropout" +  rappresentazione istogramma. 
+```{r}
+dropout_item <- df %>%
+  select("dropout")
+dropout <- rowSums(dropout_item)
+hist(dropout)
+```
 
 #SamantaRoncolino: creazione del grafico della variabile "education_rc"
 ```{r}

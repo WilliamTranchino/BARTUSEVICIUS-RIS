@@ -13,6 +13,9 @@ output:
     toc_float:
       smooth_scroll: FALSE
 ---
+```{r}
+
+```
 
 Carico i pacchetti necessari:
 ```{r}
@@ -56,4 +59,16 @@ race_items <- df %>%
 race <- rowSums(race_items)
 hist(race)
 ```
+#ReginaMeister:calcolo il nr.dei partecipanti al progetto nella 1. e nella2.ondata e paragono i numeri.
+      1    2    3    4
+  1 1524 1521 1543 1543
+  2 1151 1286 1241  890
+  1.ondata:6131
+  2.ondata:4568
+ calcolo percentuale:74,5% dei partecipanti della 1.onda partecipa al progetto in 2.onda
+ nel testo gli autori parlano di 25% di partecipanti in meno nel progetto in 2.onda
+ osservo un 0,5 % di differenza tra il nr. calcolato ed il valore espresso dagli autori nel testo.
+ 
+ commento:ancora ho difficoltà con R
+  
 

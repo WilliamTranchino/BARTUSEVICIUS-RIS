@@ -213,6 +213,7 @@ df %>%
     y = "Frequency" 
   ) 
 ``` 
+
 #SerenaSooriya: boxplot della variabile gender 
 ```{r}
 gender_items <- df %>%

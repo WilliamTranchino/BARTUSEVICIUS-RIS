@@ -104,3 +104,12 @@ race <- rowSums(country_items)
 hist(country)
 ```
 
+
+#ChiaraManetti:selezione della sezione "wave"con la rappresentazione del suo istogramma e creazione del vettore wave_items
+```{r}
+wave_items<-df%>%
+  select("wave")
+wave<-rowSums(wave_items)
+hist(wave)
+```
+

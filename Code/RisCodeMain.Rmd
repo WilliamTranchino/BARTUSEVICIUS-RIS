@@ -118,6 +118,13 @@ wave_items<-df%>%
 wave<-rowSums(wave_items)
 hist(wave)
 ```
+#MartinaPierallini: dati dei dropouts prelevati dal df e rappresentati in un istogramma:
+```{r}
+dropout_items <- df %>%
+     select("dropout")
+dropout <- rowSums(dropout_items)
+hist(dropout)
+```
 
 #SamantaRoncolino: creazione del grafico della variabile "education_rc"
 ```{r}

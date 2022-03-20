@@ -57,3 +57,17 @@ race <- rowSums(race_items)
 hist(race)
 ```
 
+#IsabellaScavone: espando il data.frame
+```{r}
+dplyr::glimpse(df)
+```
+
+#IsabellaScavone: selezione dal data.frame della sezione "dropout" e creazione dell'istogramma
+
+```{r}
+dropout_items <- df %>%
+  select("dropout")
+dropout <- rowSums(dropout_items) 
+hist(dropout)
+```
+

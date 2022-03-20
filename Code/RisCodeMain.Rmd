@@ -148,7 +148,6 @@ hist(dropout)
 #SamantaRoncolino: creazione del grafico della variabile "education_rc"
 ```{r}
 table(df$education_rc)   # Frequenza assoluta della variabile education_rc
-
 # Creo una tabella in cui assegno a "low", "medium" e "high" (le modalità della variabile education_rc) le rispettive frequenze assolute:
 education_freq <- tribble(     
   ~education,         ~freq,
@@ -156,18 +155,14 @@ education_freq <- tribble(
   "medium",           3431,
   "high",             1860
 ) 
-
 education_freq 
-
 # Questo vettore è utile per riordinare l'asse x secondo un preciso ordine in ggplot:
 positions <- c("low", "medium", "high") 
-
 # Utilizzo ggplot per creare un grafico colorato ed ordinato secondo "low", "medium" e "high"
 grafico_education <- ggplot(data = education_freq) +
   geom_bar(mapping = aes(x = education, y = freq, fill = education), stat = "identity") + 
   scale_fill_manual("legend", values = c("low" = "yellow", "medium" = "orange", "high" = "red")) + 
   scale_x_discrete(limits = positions)
-
 grafico_education
 ```
 #IsabellaScavone: selezione dal data.frame della sezione "dropout" e creazione dell'istogramma
@@ -179,3 +174,20 @@ dropout <- rowSums(dropout_items)
 hist(dropout)
 ```
 
+#AlessiaMassini: selezione della variabile "education_rc" + rappresentazione grafica in un density plot  
+```{r} 
+education_items <- df %>% 
+  select("education_rc")
+df %>% 
+  ggplot(aes(x = education_rc)) + 
+  geom_density( 
+    aes(x = education_rc), 
+    adjust = 0.5, 
+    size = 0.8, 
+    alpha = 0.5 
+    ) + 
+  labs( 
+    x = "Education level", 
+    y = "Frequency" 
+  ) 
+``` 

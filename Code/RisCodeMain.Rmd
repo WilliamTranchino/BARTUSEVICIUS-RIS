@@ -13,10 +13,6 @@ output:
     toc_float:
       smooth_scroll: FALSE
 ---
-```{r}
-
-```
-
 Carico i pacchetti necessari:
 ```{r}
 suppressPackageStartupMessages({
@@ -28,7 +24,6 @@ suppressPackageStartupMessages({
   library("cmdstanr")
 })
 ```
-
 Lettura dei dati:
 ```{r}
 df <- rio::import(here::here("DatiR", "hope_violence_final.dta"))
@@ -38,7 +33,8 @@ Per capire a cosa corrisponda la codifica di `country` conto il numero di casi i
 ```{r}
 table(df$wave, df$country)
 ```
-glimpse()   #ho corretto :)
+
+#WilliamTranchino: iniziale selezione dei parametri da analizzare "gender", creazione dell'istogramma di gender
 ```{r}
 gender_items <- df %>%
   select("gender")
@@ -52,6 +48,7 @@ country_items <- df %>%
 country <- rowSums(country_items) 
 hist(country)
 ```
+
 #GiuliaViliani: selezione dal data.frame della sezione "race" + sua rappresetazione in un istogramma e creazione del vettore race_items
 ```{r}
 race_items <- df %>%
@@ -59,6 +56,8 @@ race_items <- df %>%
 race <- rowSums(race_items)
 hist(race)
 ```
+
+
 #ReginaMeister:calcolo il nr.dei partecipanti al progetto nella 1. e nella2.ondata e paragono i numeri.
       1    2    3    4
   1 1524 1521 1543 1543
@@ -68,19 +67,14 @@ hist(race)
  calcolo percentuale:74,5% dei partecipanti della 1.onda partecipa al progetto in 2.onda
  nel testo gli autori parlano di 25% di partecipanti in meno nel progetto in 2.onda
  osservo un 0,5 % di differenza tra il nr. calcolato ed il valore espresso dagli autori nel testo.
+commento:ancora ho difficoltà con R
  
- commento:ancora ho difficoltà con R
  
- 
- #FlaviaNatoli: selezionato dal data.frame la sezione "country" e ho fatto una rappresetazione in un istogramma e creato il vettore country_items
- commento: ho ancora molte difficoltà con R
+#FlaviaNatoli: selezionato dal data.frame la sezione "country" e ho fatto una rappresetazione in un istogramma e creato il vettore country_items
+commento: ho ancora molte difficoltà con R
 ```{r}
 country_items <- df %>%
   select("country")
 race <- rowSums(country_items)
 hist(country)
-
 ```
- 
-  
-

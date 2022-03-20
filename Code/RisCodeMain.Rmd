@@ -41,6 +41,7 @@ gender_items <- df %>%
 gender <- rowSums(gender_items) 
 hist(gender)
 ```
+
 #LeonardoPecori: Istogramma sulle nazioni, volevo colorare il grafico in base alla quantita'
 ```{r}
 country_items <- df %>%
@@ -48,6 +49,7 @@ country_items <- df %>%
 country <- rowSums(country_items) 
 hist(country)
 ```
+
 #GiuliaViliani: selezione dal data.frame della sezione "race" + sua rappresetazione in un istogramma e creazione del vettore race_items
 ```{r}
 race_items <- df %>%
@@ -55,6 +57,7 @@ race_items <- df %>%
 race <- rowSums(race_items)
 hist(race)
 ```
+
 #MatteoPortici: selezione della sezione education_rc del data.frame con relativa creazione dell'istogramma e del vettore education_items
 ```{r}
 education_items <- df %>%
@@ -62,6 +65,7 @@ education_items <- df %>%
 education_rc<- rowSums(education_items) 
 hist(education_rc)
 ```
+
 #GretaMenichetti creazione vettore education_items,selezione dal data.frame della sezione "education_rc" e creazione istogramma per education_rc 
 ```{r}
 education_items <- df %>%
@@ -104,7 +108,6 @@ race <- rowSums(country_items)
 hist(country)
 ```
 
-
 #ChiaraManetti:selezione della sezione "wave"con la rappresentazione del suo istogramma e creazione del vettore wave_items
 ```{r}
 wave_items<-df%>%
@@ -113,3 +116,28 @@ wave<-rowSums(wave_items)
 hist(wave)
 ```
 
+#SamantaRoncolino: creazione del grafico della variabile "education_rc"
+```{r}
+table(df$education_rc)   # Frequenza assoluta della variabile education_rc
+
+# Creo una tabella in cui assegno a "low", "medium" e "high" (le modalità della variabile education_rc) le rispettive frequenze assolute:
+education_freq <- tribble(     
+  ~education,         ~freq,
+  "low",              5408,
+  "medium",           3431,
+  "high",             1860
+) 
+
+education_freq 
+
+# Questo vettore è utile per riordinare l'asse x secondo un preciso ordine in ggplot:
+positions <- c("low", "medium", "high") 
+
+# Utilizzo ggplot per creare un grafico colorato ed ordinato secondo "low", "medium" e "high"
+grafico_education <- ggplot(data = education_freq) +
+  geom_bar(mapping = aes(x = education, y = freq, fill = education), stat = "identity") + 
+  scale_fill_manual("legend", values = c("low" = "yellow", "medium" = "orange", "high" = "red")) + 
+  scale_x_discrete(limits = positions)
+
+grafico_education
+```

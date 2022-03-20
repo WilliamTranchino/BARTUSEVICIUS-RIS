@@ -70,5 +70,12 @@ hist(race)
  osservo un 0,5 % di differenza tra il nr. calcolato ed il valore espresso dagli autori nel testo.
  
  commento:ancora ho difficoltà con R
-  
+ 
+#AlessandroPodda:selezione dal data.frame della sezione "race" e istogramma su campo ristretto.
+```{r}
+race_items <- df %>%
+  select("race")
+race[300:500]
+hist(race[300:500])
+```
 

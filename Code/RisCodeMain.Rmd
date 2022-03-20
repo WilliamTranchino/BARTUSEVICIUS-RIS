@@ -49,7 +49,6 @@ country_items <- df %>%
 country <- rowSums(country_items) 
 hist(country)
 ```
-
 #GiuliaViliani: selezione dal data.frame della sezione "race" + sua rappresetazione in un istogramma e creazione del vettore race_items
 ```{r}
 race_items <- df %>%
@@ -72,6 +71,15 @@ education_items <- df %>%
 education_rc<- rowSums(education_items) 
 hist(education_rc)
 ```
+#MatildePapini: Ho selezionato dal df della variabile "dropout" e ho creato l'istogramma ed il vettore "dropout_items".
+```{r}
+glimpse(df)
+dropout_items <- df %>%
+  select(dropout)
+dropout <-rowSums(dropout_items)
+hist(dropout)
+```
+
 
 #GretaMenichetti creazione vettore education_items,selezione dal data.frame della sezione "education_rc" e creazione istogramma per education_rc 
 ```{r}
@@ -123,6 +131,7 @@ race[300:500]
 hist(race[300:500])
 ```
 
+
 #ChiaraManetti:selezione della sezione "wave"con la rappresentazione del suo istogramma e creazione del vettore wave_items
 ```{r}
 wave_items<-df%>%
@@ -164,6 +173,8 @@ grafico_education <- ggplot(data = education_freq) +
   scale_fill_manual("legend", values = c("low" = "yellow", "medium" = "orange", "high" = "red")) + 
   scale_x_discrete(limits = positions)
 grafico_education
+
+
 ```
 #IsabellaScavone: selezione dal data.frame della sezione "dropout" e creazione dell'istogramma
 

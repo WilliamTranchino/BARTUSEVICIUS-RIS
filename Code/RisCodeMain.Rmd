@@ -110,6 +110,14 @@ country_items <- df %>%
 race <- rowSums(country_items)
 hist(country)
 ```
+ 
+#AlessandroPodda:selezione dal data.frame della sezione "race" e istogramma su campo ristretto.
+```{r}
+race_items <- df %>%
+  select("race")
+race[300:500]
+hist(race[300:500])
+```
 
 #ChiaraManetti:selezione della sezione "wave"con la rappresentazione del suo istogramma e creazione del vettore wave_items
 ```{r}

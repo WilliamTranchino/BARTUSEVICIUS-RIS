@@ -41,7 +41,13 @@ gender_items <- df %>%
 gender <- rowSums(gender_items) 
 hist(gender)
 ```
-
+#LeonardoPecori: Istogramma sulle nazioni, volevo colorare il grafico in base alla quantita'
+```{r}
+country_items <- df %>%
+    select("country")
+country <- rowSums(country_items) 
+hist(country)
+```
 #GiuliaViliani: selezione dal data.frame della sezione "race" + sua rappresetazione in un istogramma e creazione del vettore race_items
 ```{r}
 race_items <- df %>%

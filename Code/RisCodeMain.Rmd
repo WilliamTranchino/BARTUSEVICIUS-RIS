@@ -70,5 +70,12 @@ hist(race)
  osservo un 0,5 % di differenza tra il nr. calcolato ed il valore espresso dagli autori nel testo.
  
  commento:ancora ho difficoltà con R
-  
+
+#MartinaPierallini: dati dei dropouts prelevati dal df e rappresentati in un istogramma:
+```{r}
+dropout_items <- df %>%
+     select("dropout")
+dropout <- rowSums(dropout_items)
+hist(dropout)
+```
 

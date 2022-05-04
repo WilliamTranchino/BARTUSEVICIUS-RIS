@@ -2,7 +2,7 @@
 title: "Laboratorio didattico"
 subtitle: "The Psychological Burden of the COVID-19"
 author: Corrado Caudek
-date: "`r format(Sys.Date())`"
+date: "19-05-2022"
 output:
   html_document:
     highlight: pygments
@@ -13,7 +13,28 @@ output:
     toc_float:
       smooth_scroll: FALSE
 ---
-William Tranchino, Leonardo Pecori, Virginia Simoncini: Inizializzazione e configurazione di Rstudio e Gitkraken (comprensivo di installazione di cmdstanr, Rtools, Xcode per mac, creazione di account per studenti su GitHub), con supporto avvenuto principalmente durante i due incontri organizzati in settimana. Unione dei vari elaborati tramite Gitkraken, con conseguente risoluzione dei conflitti fra file; ed infine esportazione dell'elaborato in html
+<h1>Premesse generali</h1>
+<p>1.Durante lo svolgimento dei vari report, per consentire una migliore comunicazione e fruibilita' del materiale da noi prodotto abbiamo usufruito dello strumento GitKraken, ovvero un software che ci consentiva di avere, ognuno sulla propria macchina, il progetto condiviso da tutti senza doverci incontrare fisicamente. <br>
+2.Abbiamo suddiviso il lavoro fra noi tenendo di conto dei punti di forza di ciascuno, in modo da valorizzare più aspetti possibili del progetto</p>
+
+
+
+<h1>In cosa consiste la ricerca </h1>
+<p>I ricercatori si sono interessati alle possibili associazioni che possono intercorrere tra il carico psicologico dato dal COVID-19 e i seguenti fenomeni: gli atteggiamenti anti sistemici, quali l’insoddisfazione con l’ordine politico e la struttura sociale, l’attivismo politico pacifico e la violenza politica.<br>
+I campioni sono adulti provenienti da USA, Italia, Danimarca e Ungheria.<br>
+Infine, i dati sulle sue ondate sono stati raccolti attraverso sondaggi somministrati online. </p>
+
+
+
+<h1>Cosa andremo a fare   </h1>
+<p> Il  nostro lavoro si concentrera’ maggiormente sulla prima ipotesi. Difatti, andremo a sottrarre dalla totalità dei dati quanto i cittadini delle quattro nazioni concordano o meno con le misure adottate dai governi contro il COVID-19, durante le due ondate. Tali “atteggiamenti” sono stati misurati tramite una scala Likert che comprende valori da 0 (fortemente in disaccordo) a 6 (fortemente d’accordo). <br>
+descrizione che faremo una beta-binomiale… <br>
+Ciononostante, la nostra priori non comprenderà tutti i punteggi ricavati, ma solo parte di essi. Infatti, attraverso il comando R ifelse() andremo a determinare gli insuccessi e i successi. y saranno quei valori > numero a caso , mentre i restanti verranno considerati insuccessi.  <br>
+Nel nostro caso verrà utilizzata una distribuzione a priori uniforme (Beta di parametri alpha = ? e beta = ?) – debolmente informativa/informativa?
+</p>
+
+
+rimuovere da qui zzz
 
 1. L’articolo di Bartusevicius preso in considerazione tratta il tema della relazione tra gli effetti psicologici del COVID-19 e gli atteggiamenti anti-sistemici di attivismo politico pacifico e violenza politica attuati dalla popolazione in Danimarca, Stati Uniti, Italia e Ungheria
 2. Nonostante vi fossero studi separati degli effetti psicologici della pandemia da COVID-19 e degli
@@ -31,9 +52,13 @@ associato ad un cambiamento del 6% nella necessità di caos che porta anche ad a
 attivismo e violenza politica, ma non con partecipazione autodichiarata alle proteste
 7. La causa che ha spinto gli autori a intraprendere tale ricerca è principalmente la seguente: l’assenza di studi validi che esaminassero l’influenza della pandemia sui comportamenti antisistematici. Inoltre, la validità dei risultati è stata confermata da ulteriori analisi, ad eccezione del campione americano che è risultato scarsamente affidabile.
 
-Carico i pacchetti necessari:
+fino a qui rimuovere zzz
+
+<p>Carico i pacchetti necessari: </p>
 ```{r}
 suppressPackageStartupMessages({
+  #TODO:verificare se i pacchetti caricati servono tutti o meno zzz rimuovere commento
+  #TODO: verificare se ne essario aggiungere pacchetti zzz rimuovere commento
   library("tidyverse")
   library("here")
   library("rio")
@@ -42,11 +67,12 @@ suppressPackageStartupMessages({
   library("cmdstanr")
 })
 ```
-Lettura dei dati:
+<p>Lettura dei dati:</p>
 ```{r}
 df <- rio::import(here::here("DatiR", "hope_violence_final.dta"))
 ```
-
+Inizio metodo a griglia "rimuovere questa riga zzz"
+TODO: Inserire breve descrizione di cosa sara' qui sotto
 ```{r}
 table(df$education_rc)   # Frequenza assoluta della variabile education_rc
 # Creo una tabella in cui assegno a "low", "medium" e "high" (le modalità della variabile education_rc) le rispettive frequenze assolute:
@@ -163,7 +189,7 @@ plot(y = like, x = theta, type = "l")
 max_verosim<-max(like) #valore massimo della verosimiglianza
 max_verosim #valore piu' plausibile
 ```
-<br>Il report e' stato svolto da:
+<br>Il progetto e' stato svolto da:
 <br>Virginia Simoncini
 <br>William Tranchino
 <br>Giulia Viliani

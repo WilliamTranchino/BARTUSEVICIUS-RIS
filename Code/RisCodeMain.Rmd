@@ -30,35 +30,14 @@ Infine, i dati sulle sue ondate sono stati raccolti attraverso sondaggi somminis
 <p> Il  nostro lavoro si concentrera’ maggiormente sulla prima ipotesi. Difatti, andremo a sottrarre dalla totalità dei dati quanto i cittadini delle quattro nazioni concordano o meno con le misure adottate dai governi contro il COVID-19, durante le due ondate. Tali “atteggiamenti” sono stati misurati tramite una scala Likert che comprende valori da 0 (fortemente in disaccordo) a 6 (fortemente d’accordo). <br>
 descrizione che faremo una beta-binomiale… <br>
 Ciononostante, la nostra priori non comprenderà tutti i punteggi ricavati, ma solo parte di essi. Infatti, attraverso il comando R ifelse() andremo a determinare gli insuccessi e i successi. y saranno quei valori > numero a caso , mentre i restanti verranno considerati insuccessi.  <br>
-Nel nostro caso verrà utilizzata una distribuzione a priori uniforme (Beta di parametri alpha = ? e beta = ?) – debolmente informativa/informativa?
+Nel nostro caso verrà utilizzata una distribuzione a priori uniforme (Beta di parametri alpha = ? e beta = ?) – debolmente informativa/informativa?  <br>
+“Dopodichè andremo a calcolare la media della distribuzione a posteriori per la probabilità di ottenere delle risposte che superino il livello X della scala Likert”.
 </p>
 
 
-rimuovere da qui zzz
-
-1. L’articolo di Bartusevicius preso in considerazione tratta il tema della relazione tra gli effetti psicologici del COVID-19 e gli atteggiamenti anti-sistemici di attivismo politico pacifico e violenza politica attuati dalla popolazione in Danimarca, Stati Uniti, Italia e Ungheria
-2. Nonostante vi fossero studi separati degli effetti psicologici della pandemia da COVID-19 e degli
-atteggiamenti politici (in generale) non ve ne era nessuno che cercasse di trovare e misurare una relazione
-tra questi.
-3. l'obiettivo è quello di capire gli effetti dei comportamenti politici dei singoli, (need for caos-desiderio di un nuovo inizio) che sfociano nell'ostilità verso i governi in seguito all'erosione delle relazioni sociali, i problemi di salute e le perdite socio-economiche dati dal carico
-psicologico del covid-19
-4. Vengono raccolti dati Panel a due onde (vale a dire misurazioni ripetute di individui) tramite
-sondaggi online su adulti in paesi con diversi gradi di polarizzazione politica o animosità attraverso
-linee di parte.
-5. Dopo aver effettuato questi studi possiamo arrivare alla conclusione che vede la pandemia come protagonista rispetto all’aumento di agitazioni politiche, spesso a sfondo violento, in vari stati sia europei che extra-europei. 
-6. Secondo le analisi della Perceived-Covid 19 Burden Scale per la prima ondata e della Need for
-Chaos Scale per la seconda ondata, il cambiamento del carico percepito di covid 19 sarebbe
-associato ad un cambiamento del 6% nella necessità di caos che porta anche ad atteggiamenti di
-attivismo e violenza politica, ma non con partecipazione autodichiarata alle proteste
-7. La causa che ha spinto gli autori a intraprendere tale ricerca è principalmente la seguente: l’assenza di studi validi che esaminassero l’influenza della pandemia sui comportamenti antisistematici. Inoltre, la validità dei risultati è stata confermata da ulteriori analisi, ad eccezione del campione americano che è risultato scarsamente affidabile.
-
-fino a qui rimuovere zzz
-
-<p>Carico i pacchetti necessari: </p>
+<p>Carico i pacchetti necessari</p>
 ```{r}
 suppressPackageStartupMessages({
-  #TODO:verificare se i pacchetti caricati servono tutti o meno zzz rimuovere commento
-  #TODO: verificare se ne essario aggiungere pacchetti zzz rimuovere commento
   library("tidyverse")
   library("here")
   library("rio")
@@ -67,48 +46,108 @@ suppressPackageStartupMessages({
   library("cmdstanr")
 })
 ```
-<p>Lettura dei dati:</p>
+
+<p>Lettura dei dati</p>
 ```{r}
 df <- rio::import(here::here("DatiR", "hope_violence_final.dta"))
 ```
-Inizio metodo a griglia "rimuovere questa riga zzz"
-TODO: Inserire breve descrizione di cosa sara' qui sotto
+
+Per capire a cosa corrisponda la codifica di `country` conto il numero di casi in ciascun paese e in ciascuna wave. 
+
 ```{r}
-table(df$education_rc)   # Frequenza assoluta della variabile education_rc
-# Creo una tabella in cui assegno a "low", "medium" e "high" (le modalità della variabile education_rc) le rispettive frequenze assolute:
-education_freq <- tribble(     
-  ~education,         ~freq,
-  "low",              5408,
-  "medium",           3431,
-  "high",             1860
-) 
-education_freq 
-# Questo vettore è utile per riordinare l'asse x secondo un preciso ordine in ggplot:
-positions <- c("low", "medium", "high") 
-# Utilizzo ggplot per creare un grafico colorato ed ordinato secondo "low", "medium" e "high"
-grafico_education <- ggplot(data = education_freq) +
-  geom_bar(mapping = aes(x = education, y = freq, fill = education), stat = "identity") + 
-  scale_fill_manual("legend", values = c("low" = "yellow", "medium" = "orange", "high" = "red")) + 
-  scale_x_discrete(limits = positions)
-grafico_education
+table(df$wave, df$country)
 ```
 
-```{r} 
-education_items <- df %>% 
-  select("education_rc")
+Confrontando le frequenze ottenute con i dati riportati dagi autori concludo che la codifica è la seguente:
+
+- 1: USA; 
+- 2: Denmark; 
+- 3: Italy; 
+- 4: Hungary.
+
+# Need for Chaos Scale
+
+Gli autori riportano che gli item della scala Need for Chaos Scale (NFC) corrispondono alle colonne da Q27_1 a Q27_8. Seleziono dunque queste colonne dal dataframe:
+
+```{r}
+nfc_items <- df %>%
+   select(
+     starts_with("Q27_")
+    ) 
+```
+
+```{r}
+nfc <- rowSums(nfc_items) 
+hist(nfc)
+```
+Questa codifica non ha senso, dato che ci aspettiamo che solo pochi partecipanti abbiano valori estremi e alti su questa scala. La media di NFC, infatti, non corrisponde a quello che riportano gli autori:
+
+```{r}
+mean(nfc / 8)
+```
+
+Quindi, la codifica deve essere invertita. Per fare questo uso la funzione `reverse.code()` del pacchetto `psych`:
+
+```{r}
+keys <- rep(-1, 8)  #reverse all items
+nfc_items_r <- reverse.code(keys, nfc_items, mini=rep(1, 8), maxi=rep(7, 8))
+nfc_items[1:3, ]
+nfc_items_r[1:3, ]
+```
+
+Per calcolare il punteggio totale, sommo il valore degli item e divido per il numero di item (punteggio medio).
+
+```{r}
+nfc <- rowSums(nfc_items_r) 
+hist(nfc)
+```
+
+Dato che gli autori usano la media, divido per 8
+
+```{r}
+nfc <- rowSums(nfc_items_r) / 8
+hist(nfc)
+summary(nfc)
+```
+
+Dato che gli autori usano la gamma 0--7
+
+```{r}
+summary(nfc)
+```
+
+sottraggo 1:
+
+```{r}
+nfc <- (rowSums(nfc_items_r) / 8) - 1
+hist(nfc)
+```
+
+```{r}
+summary(nfc)
+```
+
+I dati di wave 2 corrispondono a quelli riportati dagli autori nel materiale supplementare a p. 8: 
+
+```{r}
+df$nfc <- nfc
+
 df %>% 
-  ggplot(aes(x = education_rc)) + 
-  geom_density( 
-    aes(x = education_rc), 
-    adjust = 0.5, 
-    size = 0.8, 
-    alpha = 0.5 
-    ) + 
-  labs( 
-    x = "Education level", 
-    y = "Frequency" 
-  ) 
-``` 
+  group_by(wave) %>% 
+  summarise(
+    avg_nfc = mean(nfc),
+    sd_nfc = sd(nfc),
+    n = n()
+  )
+```
+
+Mi occuperò dopo di eliminare i soggetti di wave 1 che non sono presenti in wave 2. 
+
+zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz
+
+# Perceived COVID-19 burden scale
+
+Gli autori riportano che gli item della scala Perceived COVID-19 burden scale (PCBS10) corrispondono alle colonne da Q7_1 a Q7_10. Seleziono queste colonne dal dataframe:
 
 ```{r}
 pcbs10_items <- df %>%
@@ -117,14 +156,26 @@ pcbs10_items <- df %>%
     ) 
 ```
 
+Gli autori riportano:
+
+> The answer options ranged from strongly agree = 0 to strongly disagree = 6. 
+
 ```{r}
 summary(pcbs10_items)
 ```
+
+Sottraggo dunque 1:
 
 ```{r}
 pcbs10_items_1 <- pcbs10_items - 1
 summary(pcbs10_items_1)
 ```
+
+Gli autori affermano:
+
+> R indicates items that were reverse-coded for the analyses, so that higher scores indicated higher COVID-19 burden.
+
+Il reverse coding viene applicato agli item 2, 3, 5, 7, 9:
 
 ```{r}
 keys <- c(1, -1, -1, 1, -1, 1, -1, 1, -1, 1)  #reverse -1 items
@@ -135,16 +186,17 @@ pcbs10_items_r <- reverse.code(
   maxi=rep(6, 10)
 )
 pcbs10_items_1[1:3, ]
-```
-
-```{r}
 pcbs10_items_r[1:3, ]
 ```
+
+Adesso calcolo il punteggio totale:
 
 ```{r}
 df$pcbs10 <- rowSums(pcbs10_items_r) / 10 
 hist(df$pcbs10)
 ```
+
+I dati per wave 2 corrispondono a quelli indicati dagli autori:
 
 ```{r}
 df %>% 
@@ -157,38 +209,72 @@ df %>%
     n = n()
   )
 ```
-Tutti i paesi wave 1 & 2
+
+Seleziono i dati di ciascuna wave:
+
 ```{r}
-theta <- seq(0, 1, length.out = 1e5) #numero di osservazioni
+wave_1 <- df %>% 
+  dplyr::filter(wave == 1)
 
-#Quanto concordi con le misure adottate dal governo
-#la risposta con range da 0 fortemente in disaccordo a 6 fortemente d'accordo 
-#tutte le persone del paese 4 con punteggio superiore a 4 nella wave 2
+wave_2 <- df %>% 
+  dplyr::filter(wave == 2)
 
-y_dati<-sum(ifelse(df$pcbs10>4,1,0)) #successi
-n_dati<-length(df$pcbs10) #campione totale
-
-like<-dbinom(y_dati, n_dati, theta) #verosimiglianza
-plot(y = like, x = theta, type = "l")
-max_verosim<-max(like) #valore massimo della verosimiglianza
-max_verosim #valore piu' plausibile
+nrow(wave_1)
+nrow(wave_2)
 ```
-Hungary wave 2
+
+Estraggo solo le colonne di interesse:
+
 ```{r}
-theta <- seq(0, 1, length.out = 1e5) #numero di osservazioni
-
-#Quanto concordi con le misure adottate dal governo
-#la risposta con range da 0 fortemente in disaccordo a 6 fortemente d'accordo 
-#tutte le persone del paese 4 con punteggio superiore a 4 nella wave 2
-
-y_dati<-sum(ifelse(df$country==4 & df$pcbs10>4,1,0)) #successi
-n_dati<-sum(ifelse(df$country==4 & df$wave==2,1,0)) #campione totale
-
-like<-dbinom(y_dati, n_dati, theta) #verosimiglianza
-plot(y = like, x = theta, type = "l")
-max_verosim<-max(like) #valore massimo della verosimiglianza
-max_verosim #valore piu' plausibile
+w1 <- wave_1 %>% 
+  dplyr::select(id, nfc, pcbs10)
+w2 <- wave_2 %>% 
+  dplyr::select(id, nfc, pcbs10)
 ```
+
+Unisco i dati considerando solo le righe in cui ID è presente in ciascuna wave:
+
+```{r}
+dat <- left_join(w2, w1, by = "id")
+```
+
+```{r}
+y_tot<-c(dat$nfc.y,dat$pcbs10.y)
+group_tot <- c(rep(0, length(dat$nfc.y)), rep(1, length(dat$pcbs10.y)))
+d <- tibble(y_tot, group_tot)
+
+data_list <- list( N = (length(dat$id)*2), x = d$group_tot, y = d$y_tot)
+
+file <- file.path("modello_report.stan")
+mod <- cmdstan_model(file)
+
+#prova di un esercizio con modello dstan3 modello non ben identificato
+
+fit <- mod$sample( data = data_list, iter_sampling = 100000L, iter_warmup = 50000L, chains = 4L, refresh = 0)
+
+fit_stanfit <- rstan::read_stan_csv(fit$output_files())
+
+fit$summary()
+```
+<p>il valore atteso di coehn_d (1.27) significa che all'aumentare di un'unita' sulla scala nfc corrisponde un aumento in media di tale valore sulla scala pcbs10</p>
+
+<p>spostare le distribuzioni come parametri per inserirle nel file rmd cosi' da fornire una spiegazione sulla loro scelta debolmente informativa fatta da noi</p>
+
+
+
+<h1>Confronto fra due medie</h1>
+<p>TODO: inserire incipit iniziale breve</p>
+<br>
+<p>TODO: mostrare modello utilizzato con breve spiegazione del perche’ si e’ scelto</p>
+<br>
+<p>commento ipotetico sezione codice_1</p>
+<br>
+<p>commento ipotetico sezione codice_2</p>
+<br>
+<p>TODO: considerazioni finali, significato di cio’ che si e’ ottenuto</p>
+<br>
+
+
 <br>Il progetto e' stato svolto da:
 <br>Virginia Simoncini
 <br>William Tranchino
@@ -216,3 +302,30 @@ max_verosim #valore piu' plausibile
 <br>Alessia Massini
 <br>Matilde Papini
 <br>Martina Splendorini
+
+
+  data {
+    int<lower=0> N;
+    vector[N] y;
+    vector[N] x;
+    real MU_A;
+    real<lower=0> SIGMA_A;
+    real MU_B;
+    real<lower=0> SIGMA_B;
+    real<lower=0> CSCALE;
+  }
+  parameters {
+    real alpha;
+    real beta;
+    real<lower=0> sigma;
+  }
+  model {
+    alpha ~ normal(MU_A, SIGMA_A);
+    beta ~ normal(MU_B, SIGMA_B);
+    sigma ~ cauchy(0, CSCALE);
+    y ~ normal(alpha + beta * x, sigma);
+  }
+  generated quantities {
+    real cohen_d;
+    cohen_d = beta / sigma;
+  }

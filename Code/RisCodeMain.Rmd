@@ -65,7 +65,7 @@ Confrontando le frequenze ottenute con i dati riportati dagi autori concludo che
 - 3: Italy; 
 - 4: Hungary.
 
-# Need for Chaos Scale
+<h1> Need for Chaos Scale </h1>
 
 Gli autori riportano che gli item della scala Need for Chaos Scale (NFC) corrispondono alle colonne da Q27_1 a Q27_8. Seleziono dunque queste colonne dal dataframe:
 
@@ -143,9 +143,7 @@ df %>%
 
 Mi occuperò dopo di eliminare i soggetti di wave 1 che non sono presenti in wave 2. 
 
-zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz
-
-# Perceived COVID-19 burden scale
+<h1> Perceived COVID-19 burden scale </h1>
 
 Gli autori riportano che gli item della scala Perceived COVID-19 burden scale (PCBS10) corrispondono alle colonne da Q7_1 a Q7_10. Seleziono queste colonne dal dataframe:
 
@@ -262,19 +260,6 @@ fit$summary()
 
 
 
-<h1>Confronto fra due medie</h1>
-<p>TODO: inserire incipit iniziale breve</p>
-<br>
-<p>TODO: mostrare modello utilizzato con breve spiegazione del perche’ si e’ scelto</p>
-<br>
-<p>commento ipotetico sezione codice_1</p>
-<br>
-<p>commento ipotetico sezione codice_2</p>
-<br>
-<p>TODO: considerazioni finali, significato di cio’ che si e’ ottenuto</p>
-<br>
-
-
 <br>Il progetto e' stato svolto da:
 <br>Virginia Simoncini
 <br>William Tranchino
@@ -302,30 +287,3 @@ fit$summary()
 <br>Alessia Massini
 <br>Matilde Papini
 <br>Martina Splendorini
-
-
-  data {
-    int<lower=0> N;
-    vector[N] y;
-    vector[N] x;
-    real MU_A;
-    real<lower=0> SIGMA_A;
-    real MU_B;
-    real<lower=0> SIGMA_B;
-    real<lower=0> CSCALE;
-  }
-  parameters {
-    real alpha;
-    real beta;
-    real<lower=0> sigma;
-  }
-  model {
-    alpha ~ normal(MU_A, SIGMA_A);
-    beta ~ normal(MU_B, SIGMA_B);
-    sigma ~ cauchy(0, CSCALE);
-    y ~ normal(alpha + beta * x, sigma);
-  }
-  generated quantities {
-    real cohen_d;
-    cohen_d = beta / sigma;
-  }

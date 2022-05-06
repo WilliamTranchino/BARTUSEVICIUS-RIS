@@ -2,6 +2,12 @@ data {
   int<lower=0> N;
   vector[N] y;
   vector[N] x;
+  real mu_alpha;
+  real sigma_alpha;
+  real mu_beta;
+  real sigma_beta;
+  real LOCATION;
+  real SCALE;
 }
 transformed data {
   vector[N] x_std;
@@ -15,9 +21,9 @@ parameters {
   real<lower=0> sigma_std;
 }
 model {
-  alpha_std ~ normal(0, 2);
-  beta_std ~ normal(0, 2);
-  sigma_std ~ cauchy(0, 2);
+  alpha_std ~ normal(mu_alpha, sigma_alpha);
+  beta_std ~ normal(mu_beta, sigma_beta);
+  sigma_std ~ cauchy(LOCATION, SCALE);
   y_std ~ normal(alpha_std + beta_std * x_std, sigma_std);
 }
 generated quantities {

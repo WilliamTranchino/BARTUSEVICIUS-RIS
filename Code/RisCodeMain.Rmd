@@ -17,22 +17,22 @@ output:
 <p>1.Durante lo svolgimento dei vari report, per consentire una migliore comunicazione e fruibilita' del materiale da noi prodotto abbiamo usufruito dello strumento GitKraken, ovvero un software che ci consentiva di avere, ognuno sulla propria macchina, il progetto condiviso da tutti senza doverci incontrare fisicamente. <br>
 2.Abbiamo suddiviso il lavoro fra noi tenendo di conto dei punti di forza di ciascuno, in modo da valorizzare più aspetti possibili del progetto</p>
 
-
-
 <h1>In cosa consiste la ricerca </h1>
 <p>I ricercatori si sono interessati alle possibili associazioni che possono intercorrere tra il carico psicologico dato dal COVID-19 e i seguenti fenomeni: gli atteggiamenti anti sistemici, quali l’insoddisfazione con l’ordine politico e la struttura sociale, l’attivismo politico pacifico e la violenza politica.<br>
 I campioni sono adulti provenienti da USA, Italia, Danimarca e Ungheria.<br>
-Infine, i dati sulle sue ondate sono stati raccolti attraverso sondaggi somministrati online. </p>
+Infine, i dati sulle due ondate sono stati raccolti attraverso sondaggi somministrati online. </p>
+
+<h1> perche’ e’ stata fatta la ricerca </h1>
+<p>I ricercatori si sono posti l’obiettivo di trovare una correlazione tra manifestazioni violente, azioni sovversive e stress dovuti a restrizioni relative al COVID-19 contro enti governativi. Tutto ciò in riferimento a varie tipologie di governi nel mondo</p>
 
 
+<h1>valorizzazione del risultato dell’articolo   </h1>
+<p>I risultati riportano dati vari e differenti per ogni Nazione analizzata. Come inizialmente teorizzato dagli sperimentatori, i dati mettono in evidenza come le conseguenze della pandemia siano state alcune delle cause scatenanti delle manifestazioni e delle rivolte avvenute. Oltre a ciò i dati mostrano che, tra i 4 Paesi analizzati, in quelli con restrizioni più ingenti è stato rilevato un incremento del disordine politico. Questo invita a pensare che alcune delle manifestazioni avvenute nei precedenti anni sono state, con molta probabilità, scatenate da questi ultimi fattori di stress causati dalla pandemia.</p>
 
 <h1>Cosa andremo a fare   </h1>
-<p> Il  nostro lavoro si concentrera’ maggiormente sulla prima ipotesi. Difatti, andremo a sottrarre dalla totalità dei dati quanto i cittadini delle quattro nazioni concordano o meno con le misure adottate dai governi contro il COVID-19, durante le due ondate. Tali “atteggiamenti” sono stati misurati tramite una scala Likert che comprende valori da 0 (fortemente in disaccordo) a 6 (fortemente d’accordo). <br>
-descrizione che faremo una beta-binomiale… <br>
-Ciononostante, la nostra priori non comprenderà tutti i punteggi ricavati, ma solo parte di essi. Infatti, attraverso il comando R ifelse() andremo a determinare gli insuccessi e i successi. y saranno quei valori > numero a caso , mentre i restanti verranno considerati insuccessi.  <br>
-Nel nostro caso verrà utilizzata una distribuzione a priori uniforme (Beta di parametri alpha = ? e beta = ?) – debolmente informativa/informativa?  <br>
-“Dopodichè andremo a calcolare la media della distribuzione a posteriori per la probabilità di ottenere delle risposte che superino il livello X della scala Likert”.
-</p>
+<p> Il nostro lavoro consiste in un'inferenza tra le medie, il cui fine è analizzare la differenza di effetto che è possibile riscontrare tra il campione americano e quello italiano. I dati che ci interessano, oltre al campione, si riferiscono alla scala Need of caos, la quale misura quanto concordano i cittadini con asserzioni che richiamano a comportamenti anti sistemici. <br>
+Le risposte sono distribuite su una scala Likert che va da 0 a 6. Noi andremo a isolare quelle che comprendono entrambe le ondate.<br>
+A seguire, andremo a isolare i dati dopo averli adattati opportunamente al range da 0 a 6 della scala Likert. 
 
 
 <p>Carico i pacchetti necessari</p>
@@ -44,6 +44,7 @@ suppressPackageStartupMessages({
   library("brms")
   library("psych")
   library("cmdstanr")
+  library("effectsize")
 })
 ```
 
@@ -52,23 +53,21 @@ suppressPackageStartupMessages({
 df <- rio::import(here::here("DatiR", "hope_violence_final.dta"))
 ```
 
-Per capire a cosa corrisponda la codifica di `country` conto il numero di casi in ciascun paese e in ciascuna wave. 
-
+<p>Per capire a cosa corrisponda la codifica di `country` conto il numero di casi in ciascun paese e in ciascuna wave. </p>
 ```{r}
 table(df$wave, df$country)
 ```
-
-Confrontando le frequenze ottenute con i dati riportati dagi autori concludo che la codifica è la seguente:
-
-- 1: USA; 
-- 2: Denmark; 
-- 3: Italy; 
-- 4: Hungary.
+<p>Confrontando le frequenze ottenute con i dati riportati dagi autori concludo che la codifica è la seguente:
+<br>
+- 1: USA; <br>
+- 2: Denmark; <br>
+- 3: Italy; <br>
+- 4: Hungary.<br>
+</p>
 
 <h1> Need for Chaos Scale </h1>
 
-Gli autori riportano che gli item della scala Need for Chaos Scale (NFC) corrispondono alle colonne da Q27_1 a Q27_8. Seleziono dunque queste colonne dal dataframe:
-
+<p>Gli autori riportano che gli item della scala Need for Chaos Scale (NFC) corrispondono alle colonne da Q27_1 a Q27_8. Seleziono dunque queste colonne dal dataframe:</p>
 ```{r}
 nfc_items <- df %>%
    select(
@@ -80,13 +79,12 @@ nfc_items <- df %>%
 nfc <- rowSums(nfc_items) 
 hist(nfc)
 ```
-Questa codifica non ha senso, dato che ci aspettiamo che solo pochi partecipanti abbiano valori estremi e alti su questa scala. La media di NFC, infatti, non corrisponde a quello che riportano gli autori:
+<br><p>Questa codifica non ha senso, dato che ci aspettiamo che solo pochi partecipanti abbiano valori estremi e alti su questa scala. La media di NFC, infatti, non corrisponde a quello che riportano gli autori:</p>
 
 ```{r}
 mean(nfc / 8)
 ```
-
-Quindi, la codifica deve essere invertita. Per fare questo uso la funzione `reverse.code()` del pacchetto `psych`:
+<br><p>Quindi, la codifica deve essere invertita. Per fare questo uso la funzione `reverse.code()` del pacchetto `psych`:</p>
 
 ```{r}
 keys <- rep(-1, 8)  #reverse all items
@@ -95,29 +93,18 @@ nfc_items[1:3, ]
 nfc_items_r[1:3, ]
 ```
 
-Per calcolare il punteggio totale, sommo il valore degli item e divido per il numero di item (punteggio medio).
-
-```{r}
-nfc <- rowSums(nfc_items_r) 
-hist(nfc)
-```
-
-Dato che gli autori usano la media, divido per 8
-
+<br><p>Dato che gli autori usano la media, divido per 8</p>
 ```{r}
 nfc <- rowSums(nfc_items_r) / 8
 hist(nfc)
-summary(nfc)
 ```
 
-Dato che gli autori usano la gamma 0--7
-
+<br><p>Dato che gli autori usano la gamma 0-6<p>
 ```{r}
 summary(nfc)
 ```
 
-sottraggo 1:
-
+<br><p>sottraggo 1:</p>
 ```{r}
 nfc <- (rowSums(nfc_items_r) / 8) - 1
 hist(nfc)
@@ -127,7 +114,7 @@ hist(nfc)
 summary(nfc)
 ```
 
-I dati di wave 2 corrispondono a quelli riportati dagli autori nel materiale supplementare a p. 8: 
+<br><p>I dati di wave 2 corrispondono a quelli riportati dagli autori nel materiale supplementare a p. 8: </p>
 
 ```{r}
 df$nfc <- nfc
@@ -140,76 +127,7 @@ df %>%
     n = n()
   )
 ```
-
-Mi occuperò dopo di eliminare i soggetti di wave 1 che non sono presenti in wave 2. 
-
-<h1> Perceived COVID-19 burden scale </h1>
-
-Gli autori riportano che gli item della scala Perceived COVID-19 burden scale (PCBS10) corrispondono alle colonne da Q7_1 a Q7_10. Seleziono queste colonne dal dataframe:
-
-```{r}
-pcbs10_items <- df %>%
-   select(
-     starts_with("Q7_")
-    ) 
-```
-
-Gli autori riportano:
-
-> The answer options ranged from strongly agree = 0 to strongly disagree = 6. 
-
-```{r}
-summary(pcbs10_items)
-```
-
-Sottraggo dunque 1:
-
-```{r}
-pcbs10_items_1 <- pcbs10_items - 1
-summary(pcbs10_items_1)
-```
-
-Gli autori affermano:
-
-> R indicates items that were reverse-coded for the analyses, so that higher scores indicated higher COVID-19 burden.
-
-Il reverse coding viene applicato agli item 2, 3, 5, 7, 9:
-
-```{r}
-keys <- c(1, -1, -1, 1, -1, 1, -1, 1, -1, 1)  #reverse -1 items
-pcbs10_items_r <- reverse.code(
-  keys, 
-  pcbs10_items_1, 
-  mini=rep(0, 10), 
-  maxi=rep(6, 10)
-)
-pcbs10_items_1[1:3, ]
-pcbs10_items_r[1:3, ]
-```
-
-Adesso calcolo il punteggio totale:
-
-```{r}
-df$pcbs10 <- rowSums(pcbs10_items_r) / 10 
-hist(df$pcbs10)
-```
-
-I dati per wave 2 corrispondono a quelli indicati dagli autori:
-
-```{r}
-df %>% 
-  group_by(wave) %>% 
-  summarise(
-    avg_pcbs10 = mean(pcbs10),
-    sd_pcbs10 = sd(pcbs10),
-    min_pcbs10 = min(pcbs10),
-    max_pcbs10 = max(pcbs10),
-    n = n()
-  )
-```
-
-Seleziono i dati di ciascuna wave:
-
+<br><p>Seleziono i dati di ciascuna wave:</p>
 ```{r}
 wave_1 <- df %>% 
   dplyr::filter(wave == 1)
@@ -221,43 +139,91 @@ nrow(wave_1)
 nrow(wave_2)
 ```
 
-Estraggo solo le colonne di interesse:
-
+<br><p>Estraggo solo le colonne di interesse:</p>
 ```{r}
 w1 <- wave_1 %>% 
-  dplyr::select(id, nfc, pcbs10)
+  dplyr::select(id, nfc, country)
 w2 <- wave_2 %>% 
-  dplyr::select(id, nfc, pcbs10)
+  dplyr::select(id, nfc, country)
 ```
 
-Unisco i dati considerando solo le righe in cui ID è presente in ciascuna wave:
-
+<br><p>Unisco i dati considerando solo le righe in cui ID è presente in ciascuna wave:</p>
 ```{r}
 dat <- left_join(w2, w1, by = "id")
 ```
 
+<br><p>Estrapolo i dati dei paesi d'interesse (USA,ITA)</p>
 ```{r}
-y_tot<-c(dat$nfc.y,dat$pcbs10.y)
-group_tot <- c(rep(0, length(dat$nfc.y)), rep(1, length(dat$pcbs10.y)))
+usa <- dat %>% 
+  dplyr::filter(country.x == 1)
+
+ita <- dat %>% 
+  dplyr::filter(country.x == 3)
+
+nrow(usa)
+nrow(ita)
+```
+<br><p>Filtro i punteggi della scala dai paesi (x seconda ondata, y prima ondata)</p>
+```{r}
+nfc_usa <- usa %>% 
+  dplyr::select(id, nfc.x, nfc.y)
+nfc_ita <- ita %>% 
+  dplyr::select(id, nfc.x, nfc.y)
+```
+
+<br><p>Unisco i punteggi delle ondate, mantenendo i paesi distinti<p>
+```{r}
+y_usa<-c(nfc_usa$nfc.x,nfc_usa$nfc.y)
+y_ita<-c(nfc_ita$nfc.x,nfc_ita$nfc.y)
+```
+
+<br><p>Calcolo cohen_d<p>
+```{r}
+#Unione dei campioni
+y_tot<-c(y_usa,y_ita)
+#Nella variabile dicotomica 0 corrisponde a gli USA ed 1 all' ITA
+group_tot <- c(
+  rep(0, length(y_usa)), 
+  rep(1, length(y_ita))
+  )
+
 d <- tibble(y_tot, group_tot)
 
-data_list <- list( N = (length(dat$id)*2), x = d$group_tot, y = d$y_tot)
+data_list <- list( 
+  N = length(y_tot), 
+  x = d$group_tot, 
+  y = d$y_tot,
+  mu_alpha = 0,
+  sigma_alpha = 2,
+  mu_beta = 0,
+  sigma_beta = 2,
+  LOCATION = 0,
+  SCALE = 2
+  )
 
 file <- file.path("modello_report.stan")
 mod <- cmdstan_model(file)
 
-#prova di un esercizio con modello dstan3 modello non ben identificato
-
-fit <- mod$sample( data = data_list, iter_sampling = 100000L, iter_warmup = 50000L, chains = 4L, refresh = 0)
+fit <- mod$sample( 
+  data = data_list, 
+  iter_sampling = 10000L, 
+  iter_warmup = 5000L, 
+  chains = 4L, 
+  refresh = 0
+  )
 
 fit_stanfit <- rstan::read_stan_csv(fit$output_files())
 
 fit$summary()
 ```
-<p>il valore atteso di coehn_d (1.27) significa che all'aumentare di un'unita' sulla scala nfc corrisponde un aumento in media di tale valore sulla scala pcbs10</p>
 
-<p>spostare le distribuzioni come parametri per inserirle nel file rmd cosi' da fornire una spiegazione sulla loro scelta debolmente informativa fatta da noi</p>
-
+```{r}
+posterior::summarise_draws(
+  fit_stanfit,
+  ~ quantile(.x, probs = c(0.025, 0.5, 0.975))
+)
+(d2 <- cohens_d(y_tot ~ group_tot, data = d))
+```
 
 
 <br>Il progetto e' stato svolto da:

@@ -114,16 +114,15 @@ hist(nfc)
 summary(nfc)
 ```
 
-<br><p>I dati di wave 2 corrispondono a quelli riportati dagli autori nel materiale supplementare a p. 8: </p>
-
 ```{r}
 df$nfc <- nfc
-
 df %>% 
   group_by(wave) %>% 
   summarise(
+    #aggiunta in df di media e deviazione di nfc
     avg_nfc = mean(nfc),
     sd_nfc = sd(nfc),
+    #aggiunta numero di elementi delle ondate
     n = n()
   )
 ```
@@ -147,52 +146,54 @@ w2 <- wave_2 %>%
   dplyr::select(id, nfc, country)
 ```
 
-<br><p>Unisco i dati considerando solo le righe in cui ID è presente in ciascuna wave:</p>
-```{r}
-dat <- left_join(w2, w1, by = "id")
-```
-
 <br><p>Estrapolo i dati dei paesi d'interesse (USA,ITA)</p>
 ```{r}
-usa <- dat %>% 
-  dplyr::filter(country.x == 1)
+usa1 <- w1 %>% 
+  dplyr::filter(country == 1)
+usa2 <- w2 %>% 
+  dplyr::filter(country == 1)
 
-ita <- dat %>% 
-  dplyr::filter(country.x == 3)
-
-nrow(usa)
-nrow(ita)
+ita1 <- w1 %>% 
+  dplyr::filter(country == 3)
+ita2 <- w2 %>% 
+  dplyr::filter(country == 3)
 ```
-<br><p>Filtro i punteggi della scala dai paesi (x seconda ondata, y prima ondata)</p>
-```{r}
-nfc_usa <- usa %>% 
-  dplyr::select(id, nfc.x, nfc.y)
-nfc_ita <- ita %>% 
-  dplyr::select(id, nfc.x, nfc.y)
-```
-
-<br><p>Unisco i punteggi delle ondate, mantenendo i paesi distinti<p>
-```{r}
-y_usa<-c(nfc_usa$nfc.x,nfc_usa$nfc.y)
-y_ita<-c(nfc_ita$nfc.x,nfc_ita$nfc.y)
-```
-
 <br><p>Calcolo cohen_d<p>
 ```{r}
 #Unione dei campioni
-y_tot<-c(y_usa,y_ita)
+y_tot1<-c(usa1$nfc,ita1$nfc)
+y_tot2<-c(usa2$nfc,ita2$nfc)
 #Nella variabile dicotomica 0 corrisponde a gli USA ed 1 all' ITA
-group_tot <- c(
-  rep(0, length(y_usa)), 
-  rep(1, length(y_ita))
+group_tot1 <- c(
+  rep(0, length(usa1$nfc)), 
+  rep(1, length(ita1$nfc))
+  )
+group_tot2 <- c(
+  rep(0, length(usa2$nfc)), 
+  rep(1, length(ita2$nfc))
   )
 
-d <- tibble(y_tot, group_tot)
-
-data_list <- list( 
-  N = length(y_tot), 
-  x = d$group_tot, 
-  y = d$y_tot,
+d1 <- tibble(y_tot1, group_tot1)
+d2 <- tibble(y_tot2, group_tot2)
+#ondata 1
+data_list1 <- list( 
+  N = length(y_tot1), 
+  x = d1$group_tot1, 
+  y = d1$y_tot1,
+  #Prendo dei parametri poco informativi per le distribuzioni
+  mu_alpha = 0,
+  sigma_alpha = 2,
+  mu_beta = 0,
+  sigma_beta = 2,
+  LOCATION = 0,
+  SCALE = 2
+  )
+#ondata 2
+data_list2 <- list( 
+  N = length(y_tot2), 
+  x = d2$group_tot2, 
+  y = d2$y_tot2,
+  #Prendo dei parametri poco informativi per le distribuzioni
   mu_alpha = 0,
   sigma_alpha = 2,
   mu_beta = 0,
@@ -201,28 +202,48 @@ data_list <- list(
   SCALE = 2
   )
 
+#ricerca e compilazione del modello stan
 file <- file.path("modello_report.stan")
 mod <- cmdstan_model(file)
 
-fit <- mod$sample( 
-  data = data_list, 
+#esecuzione di 4 catene con 10k iterazioni e 5k valori di burn-in
+
+#ondata1
+fit1 <- mod$sample( 
+  data = data_list1, 
+  iter_sampling = 10000L, 
+  iter_warmup = 5000L, 
+  chains = 4L, 
+  refresh = 0
+  )
+#ondata2
+fit2 <- mod$sample( 
+  data = data_list2, 
   iter_sampling = 10000L, 
   iter_warmup = 5000L, 
   chains = 4L, 
   refresh = 0
   )
 
-fit_stanfit <- rstan::read_stan_csv(fit$output_files())
+fit_stanfit1 <- rstan::read_stan_csv(fit1$output_files())
+fit1$summary()
 
-fit$summary()
+fit_stanfit2 <- rstan::read_stan_csv(fit2$output_files())
+fit2$summary()
 ```
 
 ```{r}
 posterior::summarise_draws(
-  fit_stanfit,
+  fit_stanfit1,
   ~ quantile(.x, probs = c(0.025, 0.5, 0.975))
 )
-(d2 <- cohens_d(y_tot ~ group_tot, data = d))
+(d1 <- cohens_d(y_tot1 ~ group_tot1, data = d1))
+
+posterior::summarise_draws(
+  fit_stanfit2,
+  ~ quantile(.x, probs = c(0.025, 0.5, 0.975))
+)
+(d2 <- cohens_d(y_tot2 ~ group_tot2, data = d2))
 ```
 
 

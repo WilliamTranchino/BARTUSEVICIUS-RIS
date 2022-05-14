@@ -14,26 +14,29 @@ output:
       smooth_scroll: FALSE
 ---
 <h1>Premesse generali</h1>
-<p>1.Durante lo svolgimento dei vari report, per consentire una migliore comunicazione e fruibilita' del materiale da noi prodotto abbiamo usufruito dello strumento GitKraken, ovvero un software che ci consentiva di avere, ognuno sulla propria macchina, il progetto condiviso da tutti senza doverci incontrare fisicamente. <br>
-2.Abbiamo suddiviso il lavoro fra noi tenendo di conto dei punti di forza di ciascuno, in modo da valorizzare più aspetti possibili del progetto</p>
+<p>1.Durante lo svolgimento dei vari report, per consentire una migliore comunicazione e fruibilità del materiale da noi prodotto abbiamo usufruito dello strumento GitKraken, ovvero un software che consente di condividere il progetto tra tutti i partecipanti senza l’obbligo di incontrarsi fisicamente. <br>
+2.Abbiamo suddiviso il lavoro fra noi tenendo conto dei punti di forza di ciascuno, in modo da valorizzare più aspetti possibili del progetto</p>
 
-<h1>In cosa consiste la ricerca </h1>
-<p>I ricercatori si sono interessati alle possibili associazioni che possono intercorrere tra il carico psicologico dato dal COVID-19 e i seguenti fenomeni: gli atteggiamenti anti sistemici, quali l’insoddisfazione con l’ordine politico e la struttura sociale, l’attivismo politico pacifico e la violenza politica.<br>
-I campioni sono adulti provenienti da USA, Italia, Danimarca e Ungheria.<br>
-Infine, i dati sulle due ondate sono stati raccolti attraverso sondaggi somministrati online. </p>
+<h1>In cosa consiste la ricerca</h1>
+<p>Bartusevicius et al. <a href="https://journals.sagepub.com/doi/full/10.1177/09567976211031847" >cit.</a> si sono interessati alle possibili associazioni che possono intercorrere tra il carico psicologico dato dal COVID-19 e i seguenti fenomeni: atteggiamenti anti-sistemici, quali l’insoddisfazione con l’ordine politico e la struttura sociale, attivismo politico pacifico e violenza politica. Conseguentemente, i comportamenti anti-sistemici delineano la variabile dipendente, mentre la variabile indipendente è rappresentata dalla percezione più o meno negativa della situazione pandemica. <br>
+I campioni provengono da adulti residenti in USA, Italia, Danimarca e Ungheria.</p>
 
-<h1> perche’ e’ stata fatta la ricerca </h1>
-<p>I ricercatori si sono posti l’obiettivo di trovare una correlazione tra manifestazioni violente, azioni sovversive e stress dovuti a restrizioni relative al COVID-19 contro enti governativi. Tutto ciò in riferimento a varie tipologie di governi nel mondo</p>
+<h1>Perché é stata fatta la ricerca</h1>
+<p>Bartusevicius et al. <a href="https://journals.sagepub.com/doi/full/10.1177/09567976211031847" >cit.</a> si sono posti l’obiettivo di trovare una correlazione tra manifestazioni violente, azioni sovversive e stress dovuti a restrizioni relative al COVID-19 contro gli enti governativi. Altro elemento motivazionale è stato il fatto che, nonostante l’argomento fosse ampiamente discusso, non erano presenti studi validi che esaminassero l’influenza della pandemia su tali comportamenti. </p>
+
+<h1> Metodo</h1>
+<p>Bartusevicius et al. <a href="https://journals.sagepub.com/doi/full/10.1177/09567976211031847" >cit.</a> hanno raccolto i dati sulle due ondate attraverso sondaggi somministrati online in Paesi con diversi gradi di polarizzazione politica, o animosità nei comportamenti partigiani, e analizzato le conseguenze da COVID-19. Successivamente, i ricercatori si sono posti l'obiettivo di constatare se i risultati potessero essere generalizzati a contesti con diversi gradi di polarizzazione politica.<br>
+È stato fatto uso di una scala valida, ovvero la Need for Chaos Scale <a href="https://psyarxiv.com/6m4ts/" >cit.</a>, per misurare le tendenze anti sistemiche; mentre per stimare il “peso” del COVID-19 è stata introdotta la “Perceived COVID-19 Burden Scale”. In entrambe, gli intervistati dovevano indicare il loro grado di accordo in una scala Likert 1-7.</p> 
+
+<h1>Risultati</h1>
+<p> Il bagaglio psicologico del COVID-19 è associato con i comportamenti antisistemici? Si. Difatti, Bartusevicius et al. <a href="https://journals.sagepub.com/doi/full/10.1177/09567976211031847" >cit.</a> hanno individuato un'associazione positiva tra la scala “Perceived COVID-19 burden” e la need for chaos (b = 0.11, 95% intervallo di credibilità [CI] = [0.07, 0.15]). In effetti, analisi successive hanno indicato che le conseguenze da COVID19 percepite erano associate sia con la componente politica (b = 0.15, 95% CI = [0.10, 0.21]) sia con quella non-politica (b = 0.08, 95% CI = [0.04, 0.12]) della scala need for chaos. Quindi, secondo lo studio, tale variazione nella “Perceived COVID-19 burden” è associata con un cambiamento del 6% nella need for chaos.</p>
 
 
-<h1>valorizzazione del risultato dell’articolo   </h1>
-<p>I risultati riportano dati vari e differenti per ogni Nazione analizzata. Come inizialmente teorizzato dagli sperimentatori, i dati mettono in evidenza come le conseguenze della pandemia siano state alcune delle cause scatenanti delle manifestazioni e delle rivolte avvenute. Oltre a ciò i dati mostrano che, tra i 4 Paesi analizzati, in quelli con restrizioni più ingenti è stato rilevato un incremento del disordine politico. Questo invita a pensare che alcune delle manifestazioni avvenute nei precedenti anni sono state, con molta probabilità, scatenate da questi ultimi fattori di stress causati dalla pandemia.</p>
+<h1>Conclusioni</h1>
+<p>I risultati riportano dati vari e differenti per ogni nazione analizzata. Come inizialmente teorizzato dagli sperimentatori, i dati evidenziano come le conseguenze della pandemia siano state alcune delle cause scatenanti delle manifestazioni e delle rivolte avvenute. Oltre a ciò i dati mostrano che, tra i 4 Paesi analizzati, quelli con restrizioni più ingenti hanno rilevato un incremento del disordine politico. Questo invita a pensare che alcune delle manifestazioni avvenute nei precedenti anni sono state, con molta probabilità, scatenate da questi ultimi fattori di stress causati dalla pandemia.</p>
 
-<h1>Cosa andremo a fare   </h1>
-<p> Il nostro lavoro consiste in un'inferenza tra le medie, il cui fine è analizzare la differenza di effetto che è possibile riscontrare tra il campione americano e quello italiano. I dati che ci interessano, oltre al campione, si riferiscono alla scala Need of caos, la quale misura quanto concordano i cittadini con asserzioni che richiamano a comportamenti anti sistemici. <br>
-Le risposte sono distribuite su una scala Likert che va da 0 a 6. Noi andremo a isolare quelle che comprendono entrambe le ondate.<br>
-A seguire, andremo a isolare i dati dopo averli adattati opportunamente al range da 0 a 6 della scala Likert. 
-
+<h1>Cosa andremo a fare</h1>
+<p> Il nostro obiettivo è analizzare la differenza di effetto tra il campione americano e quello italiano; ovvero indagare qualora gli italiani abbiano recepito più opprimente la situazione pandemica rispetto agli americani. Per far ciò abbiamo preso come scala di riferimento la “Perceived COVID-19 burden” </p>
 
 <p>Carico i pacchetti necessari</p>
 ```{r}
@@ -41,7 +44,8 @@ suppressPackageStartupMessages({
   library("tidyverse")
   library("here")
   library("rio")
-  library("brms")
+  library("rstan")
+  library("dplyr")
   library("psych")
   library("cmdstanr")
   library("effectsize")
@@ -50,14 +54,14 @@ suppressPackageStartupMessages({
 
 <p>Lettura dei dati</p>
 ```{r}
-df <- rio::import(here::here("DatiR", "hope_violence_final.dta"))
+df <- import(here("DatiR", "hope_violence_final.dta"))
 ```
 
 <p>Per capire a cosa corrisponda la codifica di `country` conto il numero di casi in ciascun paese e in ciascuna wave. </p>
 ```{r}
 table(df$wave, df$country)
 ```
-<p>Confrontando le frequenze ottenute con i dati riportati dagi autori concludo che la codifica è la seguente:
+<p>Confrontando le frequenze ottenute con i dati riportati dagli autori concludo che la codifica è la seguente:
 <br>
 - 1: USA; <br>
 - 2: Denmark; <br>
@@ -65,212 +69,337 @@ table(df$wave, df$country)
 - 4: Hungary.<br>
 </p>
 
-<h1> Need for Chaos Scale </h1>
+<p>
+Gli autori riportano che gli item della scala Perceived COVID-19 burden scale (PCBS10) corrispondono alle colonne da Q7_1 a Q7_10. Seleziono queste colonne dal dataframe:</p>
 
-<p>Gli autori riportano che gli item della scala Need for Chaos Scale (NFC) corrispondono alle colonne da Q27_1 a Q27_8. Seleziono dunque queste colonne dal dataframe:</p>
 ```{r}
-nfc_items <- df %>%
+pcbs10_items <- df %>%
    select(
-     starts_with("Q27_")
+     starts_with("Q7_")
     ) 
 ```
-
+<p>
+Gli autori riportano:
+The answer options ranged from strongly agree = 0 to strongly disagree = 6. 
+</p>
 ```{r}
-nfc <- rowSums(nfc_items) 
-hist(nfc)
+summary(pcbs10_items)
 ```
-<br><p>Questa codifica non ha senso, dato che ci aspettiamo che solo pochi partecipanti abbiano valori estremi e alti su questa scala. La media di NFC, infatti, non corrisponde a quello che riportano gli autori:</p>
-
+<p>
+Dunque sottraggo 1 per adattare la scala Likert dai parametri 1-7 a 0-6
+</p>
 ```{r}
-mean(nfc / 8)
+pcbs10_items_1 <- pcbs10_items - 1
+summary(pcbs10_items_1)
 ```
-<br><p>Quindi, la codifica deve essere invertita. Per fare questo uso la funzione `reverse.code()` del pacchetto `psych`:</p>
-
+<p>
+Gli autori affermano:  <br>
+Il reverse coding viene applicato agli item 2, 3, 5, 7, 9. <br>
+Il motivo di ciò deriva dal fatto che le domande sono poste in maniera tale che alcune di esse esprimono disaccordo (diminuzione del punteggio), mentre altre l’accordo (aumento del punteggio). Questo però causa imprecisioni poiché le domande appartengono allo stesso concetto (percezione negativa del COVID-19), il che rende le risposte non ben distribuite.<br>
+Quindi per riportarle tutte allo stesso livello viene effettuata l’inversione del valore delle risposte. In questo modo ogni aumento e diminuzione vengono compensati.</p>
 ```{r}
-keys <- rep(-1, 8)  #reverse all items
-nfc_items_r <- reverse.code(keys, nfc_items, mini=rep(1, 8), maxi=rep(7, 8))
-nfc_items[1:3, ]
-nfc_items_r[1:3, ]
+keys <- c(1, -1, -1, 1, -1, 1, -1, 1, -1, 1)  #reverse -1 items
+pcbs10_items_r <- reverse.code(
+  keys, 
+  pcbs10_items_1, 
+  mini=rep(0, 10), 
+  maxi=rep(6, 10)
+)
+pcbs10_items_1[1:3, ]
+pcbs10_items_r[1:3, ]
 ```
-
-<br><p>Dato che gli autori usano la media, divido per 8</p>
+<p>
+Adesso calcolo il punteggio totale:
+</p>
 ```{r}
-nfc <- rowSums(nfc_items_r) / 8
-hist(nfc)
-```
-
-<br><p>Dato che gli autori usano la gamma 0-6<p>
-```{r}
-summary(nfc)
-```
-
-<br><p>sottraggo 1:</p>
-```{r}
-nfc <- (rowSums(nfc_items_r) / 8) - 1
-hist(nfc)
-```
-
-```{r}
-summary(nfc)
+#frequenza relativa 
+df$pcbs10 <- rowSums(pcbs10_items_r) / 10
+hist(df$pcbs10)
 ```
 
-```{r}
-df$nfc <- nfc
-df %>% 
-  group_by(wave) %>% 
-  summarise(
-    #aggiunta in df di media e deviazione di nfc
-    avg_nfc = mean(nfc),
-    sd_nfc = sd(nfc),
-    #aggiunta numero di elementi delle ondate
-    n = n()
-  )
-```
 <br><p>Seleziono i dati di ciascuna wave:</p>
 ```{r}
 wave_1 <- df %>% 
-  dplyr::filter(wave == 1)
+  filter(wave == 1)
 
 wave_2 <- df %>% 
-  dplyr::filter(wave == 2)
-
+  filter(wave == 2)
+#Totale di persone per ondata di tutti i paesi
 nrow(wave_1)
 nrow(wave_2)
 ```
 
-<br><p>Estraggo solo le colonne di interesse:</p>
+<br><p>Estraggo solo le colonne di interesse (id, pcbs10, country)</p>
 ```{r}
 w1 <- wave_1 %>% 
-  dplyr::select(id, nfc, country)
+  select(id, pcbs10, country)
 w2 <- wave_2 %>% 
-  dplyr::select(id, nfc, country)
+  select(id, pcbs10, country)
 ```
 
-<br><p>Estrapolo i dati dei paesi d'interesse (USA,ITA)</p>
+<br><p>Filtriamo i paesi d’interesse (USA e ITA) per le due ondate</p>
 ```{r}
+#Paese 1: USA
 usa1 <- w1 %>% 
-  dplyr::filter(country == 1)
+  filter(country == 1) 
 usa2 <- w2 %>% 
-  dplyr::filter(country == 1)
-
+  filter(country == 1)
+#Paese 3: ITA
 ita1 <- w1 %>% 
-  dplyr::filter(country == 3)
+  filter(country == 3)
 ita2 <- w2 %>% 
-  dplyr::filter(country == 3)
+  filter(country == 3)
 ```
-<br><p>Calcolo cohen_d<p>
+<p>Nel seguente modello abbiamo deciso di prendere in considerazione parametri debolmente informativi per limitare l’influenza eccessiva delle osservazioni estreme (valori anomali) e per facilitare la stima dei parametri mediante MCMC. Quindi, per utilizzare le distribuzioni a priori debolmente informative abbiamo standardizzato i dati. Infine abbiamo riportato i dati su una scala originaria per interpretarli. </p>
+ 
+
+<p>Definizione il modello in linguaggio Stan.</p>
+```{r}
+model_string <- "
+  //definizione dei dati per le funzioni
+  data {
+  int<lower=0> N;
+  vector[N] y;
+  vector[N] x;
+  real mu_alpha;
+  real sigma_alpha;
+  real mu_beta;
+  real sigma_beta;
+  real LOCATION;
+  real SCALE;
+}
+//Standardizzazione dei dati
+transformed data {
+  vector[N] x_std;
+  vector[N] y_std;
+  x_std = (x - mean(x)) / sd(x);
+  y_std = (y - mean(y)) / sd(y);
+}
+//Parametri del modello utilizzati per il campionamento 
+parameters {
+  real alpha_std;
+  real beta_std;
+  real<lower=0> sigma_std;
+}
+//Modello con cui sono distribuiti i dati 
+model {
+  alpha_std ~ normal(mu_alpha, sigma_alpha); 
+  beta_std ~ normal(mu_beta, sigma_beta);
+  sigma_std ~ cauchy(LOCATION, SCALE);
+  y_std ~ normal(alpha_std + beta_std * x_std, sigma_std);
+}
+// Calcolo valori d’interesse
+generated quantities {
+  real alpha;
+  real beta;
+  real<lower=0> sigma;
+  real cohen_d;
+  alpha = sd(y) * (alpha_std - beta_std * mean(x) / sd(x)) + mean(y);
+  beta = beta_std * sd(y) / sd(x);
+  sigma = sd(y) * sigma_std;
+  cohen_d = beta / sigma; 
+}
+"
+```
+
+<p>Salvo il modello Stan in un file.</p>
+```{r}
+writeLines(model_string, con = "modello_media.stan")
+file <- file.path("modello_media.stan")
+```
+
+<p>Compilo il modello.</p>
+```{r}
+mod <- cmdstan_model(file)
+```
+
+<br><p>Facciamo il confronto tra due medie indipendenti, ovvero USA e ITA</p>
 ```{r}
 #Unione dei campioni
-y_tot1<-c(usa1$nfc,ita1$nfc)
-y_tot2<-c(usa2$nfc,ita2$nfc)
-#Nella variabile dicotomica 0 corrisponde a gli USA ed 1 all' ITA
-group_tot1 <- c(
-  rep(0, length(usa1$nfc)), 
-  rep(1, length(ita1$nfc))
+y_tot1<-c(usa1$pcbs10, ita1$pcbs10)
+y_tot2<-c(usa2$pcbs10, ita2$pcbs10)
+#x assume valori dicotomici: x = 0 per gli USA e x =1 per l’ITA
+group_tot1 <- c( #variabile dicotomica wave1
+  rep(0, length(usa1$pcbs10)), 
+  rep(1, length(ita1$pcbs10))
   )
-group_tot2 <- c(
-  rep(0, length(usa2$nfc)), 
-  rep(1, length(ita2$nfc))
+group_tot2 <- c( #variabile dicotomica wave 2
+  rep(0, length(usa2$pcbs10)), 
+  rep(1, length(ita2$pcbs10))
   )
-
+#creiamo dataframe con i dati seguenti 
 d1 <- tibble(y_tot1, group_tot1)
 d2 <- tibble(y_tot2, group_tot2)
+```
+
+<p>Inserisco i dati in una lista così come richiesto da Stan:</p>
+```{r}
 #ondata 1
 data_list1 <- list( 
-  N = length(y_tot1), 
-  x = d1$group_tot1, 
-  y = d1$y_tot1,
+  N = length(y_tot1),  #lunghezza vettore y_tot1
+  x = d1$group_tot1,  #variabile dicotomica wave1
+  y = d1$y_tot1, #dati wave1
   #Prendo dei parametri poco informativi per le distribuzioni
-  mu_alpha = 0,
-  sigma_alpha = 2,
-  mu_beta = 0,
-  sigma_beta = 2,
-  LOCATION = 0,
-  SCALE = 2
+  mu_alpha = 2, #mu media
+  sigma_alpha = 2, #sigma deviazione
+  mu_beta = 2, #mu media
+  sigma_beta = 2, #sigma deviazione
+  LOCATION = 0, #parametro della cauchy (dove è centrata la distr.)
+  SCALE = 2 #altro parametro della cauchy che ne determina l’altezza
   )
+
 #ondata 2
 data_list2 <- list( 
-  N = length(y_tot2), 
-  x = d2$group_tot2, 
-  y = d2$y_tot2,
+  N = length(y_tot2), #lunghezza vettore y_tot2
+  x = d2$group_tot2, #variabile dicotomica wave2
+  y = d2$y_tot2, #dati wave2
   #Prendo dei parametri poco informativi per le distribuzioni
-  mu_alpha = 0,
-  sigma_alpha = 2,
-  mu_beta = 0,
-  sigma_beta = 2,
-  LOCATION = 0,
-  SCALE = 2
+  mu_alpha = 2, #mu media 
+  sigma_alpha = 2, #sigma deviazione
+  mu_beta = 2, #mu media
+  sigma_beta = 2, #sigma deviazione
+  LOCATION = 0, #parametro della cauchy (dove è centrata la distr.)
+  SCALE = 2 #altro parametro della cauchy che ne determina l’altezza
   )
+```
 
-#ricerca e compilazione del modello stan
-file <- file.path("modello_report.stan")
-mod <- cmdstan_model(file)
-
-#esecuzione di 4 catene con 10k iterazioni e 5k valori di burn-in
-
+<p>Eseguo il campionamento MCMC.</p>
+```{r}
+suppressMessages({
 #ondata1
 fit1 <- mod$sample( 
   data = data_list1, 
-  iter_sampling = 10000L, 
-  iter_warmup = 5000L, 
-  chains = 4L, 
+  iter_sampling = 100000L,  #10k iterazioni
+  iter_warmup = 50000L, #5k valori di Burn-in
+  chains = 4L, #Esecuzione di 4 catene
   refresh = 0
   )
+
 #ondata2
 fit2 <- mod$sample( 
   data = data_list2, 
-  iter_sampling = 10000L, 
-  iter_warmup = 5000L, 
-  chains = 4L, 
+  iter_sampling = 100000L, #10k iterazioni
+  iter_warmup = 50000L, #5k valori di Burn-in
+  chains = 4L, #Esecuzione di 4 catene
   refresh = 0
   )
+})
+```
+<br><p>Il parametro alfa corrisponde all’intercetta, ovvero il punto in cui la retta incrocia l’asse delle ordinate. 
 
-fit_stanfit1 <- rstan::read_stan_csv(fit1$output_files())
+<br>Il parametro beta corrisponde alla differenza tra le medie dei due campioni e anche all’inclinazione della retta, di cui la cifra che riporta sono le unità con cui aumenta mediamente y al variare di un’unità di x. Qualora assumesse valore zero, questo dimostrerebbe la congruenza delle medie. Nel nostro caso possiamo notare che l’intervallo tra q5 e q95 (intervallo di credibilità al 95%) non comprende tale valore, per cui questo indica che le medie sono diverse come ipotizzato.
+
+<br>Il cohen permette di definire di quanto differiscono per intensità gli USA e ITA per quanto riguarda una percezione più gravosa della situazione pandemica, ovvero si può concludere che l’ITA ha vissuto maggiormente la pandemia rispetto agli USA. Ciò si deduce anche dal fatto che il risultato (il cohen) non corrisponde allo zero. Difatti, se avesse assunto come valore 0 si sarebbe dedotta una mancanza di effetto. Questa conclusione è osservabile facendo un confronto tra le medie dei paesi osservati per le rispettive ondate. </p>
+
+<br><p>Prima Wave</p>
+```{r}
+fit_stanfit1 <- read_stan_csv(fit1$output_files())
 fit1$summary()
-
-fit_stanfit2 <- rstan::read_stan_csv(fit2$output_files())
+```
+<br><p>Seconda Wave</p>
+```{r}
+fit_stanfit2 <- read_stan_csv(fit2$output_files())
 fit2$summary()
+```
+<p>confronto fra le medie dei paesi<br>
+il paese con la media maggiore ha percepito più duramente il covid-19</p>
+
+```{r}
+mean(usa1$pcbs10)
+mean(ita1$pcbs10)
+
+mean(ita2$pcbs10)
+mean(usa2$pcbs10)
+```
+
+<br><p>Prima Wave</p>
+```{r}
+#aggregazione dei dati dei due paesi, con specificazione delle medie
+data_means <- aggregate(d1$y_tot1, 
+                        list(d1$group_tot1),
+                        mean)
 ```
 
 ```{r}
-posterior::summarise_draws(
-  fit_stanfit1,
-  ~ quantile(.x, probs = c(0.025, 0.5, 0.975))
-)
-(d1 <- cohens_d(y_tot1 ~ group_tot1, data = d1))
-
-posterior::summarise_draws(
-  fit_stanfit2,
-  ~ quantile(.x, probs = c(0.025, 0.5, 0.975))
-)
-(d2 <- cohens_d(y_tot2 ~ group_tot2, data = d2))
+boxplot(d1$y_tot1 ~ d1$group_tot1, #distribuzione di y su x
+   xlab = "group_tot", #Etichetta inerente asse x
+   ylab = "y_tot",  #Etichetta inerente asse y
+   main = "Differenza della media prima wave",
+   notch = TRUE, #Notched box plot sono utili per evidenziare una differenza tra le mediane 
+   varwidth = TRUE, #Disegna un box plot proporzionale alle dimensioni del campione
+   col = c("green","yellow"), 
+   names = c("Usa","Ita")
+         )                          
+points(x = 1:nrow(data_means), #Aggiungiamo i punti al boxplot
+       y = data_means$x,
+       col = "red",
+       pch = 16) #Per scegliere i simboli da utilizzare si usa l’opzione pch
+text(x = 1:nrow(data_means), #Aggiungiamo il testo al plot
+     y = data_means$x - 0.15,
+     labels = paste("Mean:", round(data_means$x, 1)), #Inseriamo il valore della media
+     col = "black")
 ```
 
+<br><p>Seconda Wave</p>
+```{r}
+#aggregazione dei dati dei due paesi, con specificazione delle medie
+data_means <- aggregate(d2$y_tot2, 
+                        list(d2$group_tot2),
+                        mean)
+```
 
-<br>Il progetto e' stato svolto da:
-<br>Virginia Simoncini
-<br>William Tranchino
-<br>Giulia Viliani
-<br>Samanta Roncolino
-<br>Regina Meister
-<br>Lorenzo Zerauschek
-<br>Alessia Nesti
-<br>Martina Pierallini
-<br>Greta Menichetti
-<br>Elisa Pellegrini
-<br>Chiara Manetti
-<br>Elisa Placedi
-<br>Flavia Natoli
-<br>Costanza Lunari
-<br>Marta Mariottini
-<br>Gaia Lenzini
-<br>Matteo Portici
-<br>Camilla Pensalfini
-<br>Leonardo Pecori
-<br>Lorenza Paladini
-<br>Eleonora Lunardi
-<br>Serena Sooriya
-<br>Isabella Scavone
-<br>Alessia Massini
-<br>Matilde Papini
-<br>Martina Splendorini
+```{r}
+boxplot(d2$y_tot2 ~ d2$group_tot2,  #distribuzione di y su x
+   xlab = "group_tot", #Etichetta inerente asse x
+   ylab = "y_tot",  #Etichetta inerente asse y
+   main = "Differenza della media seconda wave",
+   notch = TRUE, #Notched box plot sono utili per evidenziare una differenza tra le mediane 
+   varwidth = TRUE, #Disegna un box plot proporzionale alle dimensioni del campione
+   col = c("green","yellow"),
+   names = c("Usa","Ita")
+         )                 
+points(x = 1:nrow(data_means), #Aggiungiamo i punti al boxplot
+       y = data_means$x,
+       col = "red",
+       pch = 16) #Per scegliere i simboli da utilizzare si usa l’opzione pch
+text(x = 1:nrow(data_means), #Aggiungiamo il testo al plot
+     y = data_means$x - 0.15,
+     labels = paste("Mean:", round(data_means$x, 1)), #Inseriamo il valore della media
+     col = "black")
+```
+
+<br>Il progetto è stato svolto da:
+<ul>
+  <li>Giulia Viliani</li>
+  <li>Virginia Simoncini</li>
+  <li>William Tranchino</li>
+  <li>Samanta Roncolino</li>
+  <li>Leonardo Pecori</li>
+  <li>Regina Meister</li>
+  <li>Lorenzo Zerauschek</li>
+  <li>Alessia Nesti</li>
+  <li>Martina Pierallini</li>
+  <li>Greta Menichetti</li>
+  <li>Elisa Pellegrini</li>
+  <li>Chiara Manetti</li>
+  <li>Flavia Natoli</li>
+  <li>Costanza Lunari</li>
+  <li>Marta Mariottini</li>
+  <li>Gaia Lenzini</li>
+  <li>Matteo Portici</li>
+  <li>Camilla Pensalfini</li>
+  <li>Lorenza Paladini</li>
+  <li>Eleonora Lunardi</li>
+  <li>Serena Sooriya</li>
+  <li>Isabella Scavone</li>
+  <li>Alessia Massini</li>
+  <li>Matilde Papini</li>
+  <li>Martina Splendorini</li>
+
+</ul>
+
+```{r}
+#Informazioni sulla sessione di lavoro
+utils::sessionInfo()
+```
+
